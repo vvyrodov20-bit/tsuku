@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="metaTitle">Falling Pickaxe — Slot no estilo Minecraft na 1win | Jogar Online</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090d13;
+      --card-bg: rgba(18, 24, 33, 0.78);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --green-mc: #5b8731;
+      --green-mc-hover: #486e24;
+      --gold: #f59e0b;
+      --diamond: #38bdf8;
+      --tg-blue: #229ed9;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    /* Защита от выделения и сохранения */
+    body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      background-color: var(--bg-dark);
+      background-image: 
+        linear-gradient(180deg, rgba(9, 13, 19, 0.75) 0%, rgba(9, 13, 19, 0.92) 50%, rgba(9, 13, 19, 0.98) 100%),
+        radial-gradient(circle at 50% 20%, rgba(192, 38, 211, 0.18) 0%, transparent 60%),
+        url('Gemini_Generated_Image_m3ed9nm3ed9nm3ed.jpeg');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: var(--text-main);
+      font-family: 'Rubik', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    img {
+      -webkit-user-drag: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Навигация */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(9, 13, 19, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 13px;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      line-height: 1.2;
+    }
+
+    .logo span {
+      font-size: 9px;
+      color: var(--diamond);
+      text-transform: uppercase;
+      font-family: 'Rubik', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 16px;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .lang-switcher {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #cbd5e1;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .lang-switcher option {
+      background: #131920;
+      color: #fff;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 14px;
+      transition: transform 0.1s, background-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-gold {
+      background-color: var(--gold);
+      color: #000;
+      font-weight: 800;
+      box-shadow: 0 4px 0 #b45309;
+    }
+
+    .btn-gold:hover {
+      background-color: #d97706;
+    }
+
+    .btn-telegram {
+      background-color: var(--tg-blue);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 4px 0 #176f99;
+    }
+
+    .btn-telegram:hover {
+      background-color: #1b86ba;
+    }
+
+    /* Бегущая строка LIVE WINS */
+    .live-ticker-container {
+      background: rgba(11, 16, 23, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 8px 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .ticker-inner {
+      max-width: 1040px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .live-badge-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #0f172a;
+      border: 1px solid #334155;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      color: #fff;
+      white-space: nowrap;
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.35);
+    }
+
+    .pulsing-red-dot {
+      width: 10px;
+      height: 10px;
+      background-color: #ef4444;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #ef4444;
+      animation: pulseRed 1.4s infinite ease-in-out;
+    }
+
+    @keyframes pulseRed {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.25); }
+    }
+
+    .ticker-track-wrapper {
+      flex: 1;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      gap: 14px;
+      animation: marquee 35s linear infinite;
+    }
+
+    .ticker-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .win-bubble {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      color: #e2e8f0;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .win-amount {
+      color: #22c55e;
+      font-weight: 800;
+    }
+
+    .online-counter-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(34, 197, 94, 0.14);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #4ade80;
+      white-space: nowrap;
+    }
+
+    .green-dot {
+      width: 7px;
+      height: 7px;
+      background-color: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #22c55e;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 45px 0 35px;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .badge {
+      background: rgba(18, 24, 33, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--card-border);
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #cbd5e1;
+    }
+
+    h1 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 24px;
+      line-height: 1.4;
+      margin-bottom: 30px;
+      color: #fff;
+      text-align: center;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-content-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      margin-bottom: 32px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      padding: 26px;
+      border-radius: 14px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-desc {
+      flex: 1.2;
+      font-size: 15px;
+      color: #e2e8f0;
+      line-height: 1.7;
+    }
+
+    .hero-image-box {
+      flex: 0.8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .animated-pickaxe {
+      width: 100%;
+      max-width: 290px;
+      height: auto;
+      border-radius: 16px;
+      animation: pickaxeFloat 3.5s ease-in-out infinite alternate;
+      filter: drop-shadow(0 10px 22px rgba(56, 189, 248, 0.35));
+    }
+
+    @keyframes pickaxeFloat {
+      0% {
+        transform: translateY(0) rotate(0deg) scale(1);
+        filter: drop-shadow(0 10px 20px rgba(56, 189, 248, 0.3));
+      }
+      50% {
+        transform: translateY(-10px) rotate(2deg) scale(1.02);
+        filter: drop-shadow(0 16px 30px rgba(56, 189, 248, 0.45));
+      }
+      100% {
+        transform: translateY(6px) rotate(-2deg) scale(0.99);
+        filter: drop-shadow(0 8px 16px rgba(56, 189, 248, 0.2));
+      }
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin: 0 auto 30px;
+    }
+
+    .spec-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 14px 10px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .spec-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .spec-val {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Видеоплеер */
+    .demo-block {
+      margin: 45px auto 55px;
+      text-align: center;
+    }
+
+    .demo-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .demo-subtitle {
+      font-size: 14px;
+      color: #cbd5e1;
+      margin-bottom: 22px;
+    }
+
+    .video-wrapper {
+      max-width: 320px;
+      margin: 0 auto 24px;
+      background: #000;
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(168, 85, 247, 0.25);
+      aspect-ratio: 9 / 16;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: none;
+      object-fit: cover;
+    }
+
+    /* Заголовки */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin: 60px 0 24px;
+    }
+
+    .section-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 20px;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+
+    .section-subtitle {
+      font-size: 11px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .section-link {
+      color: var(--diamond);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .section-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Механики */
+    .mechanics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .mechanic-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px 20px;
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .mechanic-card:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .pixel-icon-box {
+      width: 44px;
+      height: 44px;
+      background: #f59e0b;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #000;
+      font-weight: 900;
+      box-shadow: 0 4px 0 #b45309;
+    }
+
+    .mechanic-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .mechanic-text {
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.55;
+    }
+
+    /* Четыре вида кирок */
+    .pickaxes-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .pickaxe-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 24px 18px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pickaxe-card.highlight {
+      border-color: #0284c7;
+      box-shadow: 0 0 20px rgba(2, 132, 199, 0.3);
+    }
+
+    .pickaxe-pixel-svg {
+      width: 56px;
+      height: 56px;
+      margin-bottom: 18px;
+      display: block;
+      image-rendering: pixelated;
+      transition: transform 0.2s;
+    }
+
+    .pickaxe-card:hover .pickaxe-pixel-svg {
+      transform: scale(1.08) rotate(-4deg);
+    }
+
+    .hp-badge {
+      display: inline-block;
+      align-self: flex-start;
+      background: #f59e0b;
+      color: #000;
+      font-weight: 800;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+    }
+
+    .pickaxe-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .pickaxe-desc {
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .notice-bar {
+      background: rgba(17, 41, 31, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid #166534;
+      border-radius: 8px;
+      padding: 14px 20px;
+      margin-top: 16px;
+      font-size: 12.5px;
+      color: #86efac;
+    }
+
+    .notice-bar strong {
+      color: #f59e0b;
+    }
+
+    /* Отзывы */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .review-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      background: #0ea5e9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 14px;
+      color: #fff;
+    }
+
+    .user-details h4 {
+      font-size: 13px;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .user-details span {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .rating-badge {
+      background: #f59e0b;
+      color: #000;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 7px;
+      border-radius: 4px;
+    }
+
+    .stars {
+      color: #f59e0b;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      font-size: 12.5px;
+      color: #cbd5e1;
+      line-height: 1.55;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    details {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 14px 18px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 15px;
+      list-style: none;
+      position: relative;
+      padding-right: 24px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: var(--gold);
+      font-size: 18px;
+    }
+
+    details[open] summary::after {
+      content: '—';
+    }
+
+    details p {
+      margin-top: 10px;
+      color: #cbd5e1;
+      font-size: 13.5px;
+    }
+
+    .article-box {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 28px;
+      margin: 45px 0;
+    }
+
+    .article-box h2 {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .article-box p {
+      color: #cbd5e1;
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+
+    footer {
+      background: rgba(9, 13, 19, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 28px 20px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .disclaimer {
+      font-weight: 800;
+      color: #ef4444;
+      margin-bottom: 8px;
+    }
+
+    /* Поп-ап бонуса */
+    .modal-overlay {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .modal-card {
+      background: rgba(24, 29, 35, 0.92);
+      backdrop-filter: blur(12px);
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 16px 20px;
+      width: 280px;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 860px) {
+      nav { display: none; }
+      .hero-content-wrapper { flex-direction: column; text-align: center; }
+      .mechanics-grid, .reviews-grid { grid-template-columns: 1fr; }
+      .pickaxes-grid { grid-template-columns: repeat(2, 1fr); }
+      .specs-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 580px) {
+      .ticker-inner { gap: 10px; }
+      .online-counter-badge { display: none; }
+      .pickaxes-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 18px; }
+      .section-title { font-size: 16px; }
+      .hero-actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Навигация -->
+  <header>
+    <div class="nav-container">
+      <a href="https://lkiu.cc/9d7ad6b0" target="_blank" class="logo">
+        FALLING PICKAXE
+        <span>slot • 1win</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#demo" data-i18n="navDemo">Demo</a></li>
+          <li><a href="#mechanics" data-i18n="navHome">Início</a></li>
+          <li><a href="#pickaxes" data-i18n="navHow">Como Jogar</a></li>
+          <li><a href="#reviews" data-i18n="navReviews">Avaliações</a></li>
+          <li><a href="#faq" data-i18n="navFaq">FAQ</a></li>
+          <li><a href="#review" data-i18n="navArticles">Artigos</a></li>
+        </ul>
+      </nav>
+      <div class="btn-group">
+        <select class="lang-switcher" id="langSelect" onchange="switchLanguage(this.value)">
+          <option value="pt">🇧🇷 PT</option>
+          <option value="ru">🇷🇺 RU</option>
+          <option value="en">🇬🇧 EN</option>
+          <option value="es">🇪🇸 ES</option>
+        </select>
+        <a href="https://t.me/towerrush_casino" target="_blank" class="btn btn-telegram" style="padding: 8px 14px; font-size: 12px;">Telegram</a>
+        <a href="https://lkiu.cc/9d7ad6b0" target="_blank" class="btn btn-gold" style="padding: 8px 14px; font-size: 12px;" data-i18n="btnPlayNav">Jogar</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- LIVE WINS -->
+  <div class="live-ticker-container">
+    <div class="ticker-inner">
+      <div class="live-badge-box">
+        <span class="pulsing-red-dot"></span>
+        LIVE WINS
+      </div>
+
+      <div class="ticker-track-wrapper">
+        <div class="ticker-track" id="tickerTrack"></div>
+      </div>
+
+      <!-- Естественный стартовый счетчик онлайна -->
+      <div class="online-counter-badge">
+        <span class="green-dot"></span>
+        <span data-i18n="onlineWord">Online</span>: <span id="onlineCount">247</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <!-- Hero Секция -->
+    <section class="hero">
+      <div class="badges">
+        <span class="badge" data-i18n="badgeSpins">🎁 Giros Grátis</span>
+        <span class="badge" data-i18n="badgeBonus">💎 Bônus de até ×5000</span>
+        <span class="badge" data-i18n="badgeMobile">📱 Compatível com Celular</span>
+      </div>
+
+      <h1 data-i18n="heroTitle">Falling Pickaxe — Slot no estilo Minecraft</h1>
+
+      <div class="hero-content-wrapper">
+        <p class="hero-desc" data-i18n="heroDesc">
+          Lance a picareta e observe a terra voar enquanto ela quebra bloco após bloco em sua descida. Cada golpe reduz a durabilidade da ferramenta, mas com um acerto de sorte você encontrará cobre, ouro, diamante ou esmeralda. Enquanto a TNT limpa o caminho, a flecha de melhoria aumenta o tamanho da ferramenta em pleno vôo, e a bancada de trabalho a transforma em algo muito mais resistente. Um único lançamento pode transformar uma modesta picareta de madeira em uma escavadeira de diamante — e quanto mais fundo ela cair, maiores serão os seus ganhos.
+        </p>
+        <div class="hero-image-box">
+          <img src="falling-pickaxe-mark.jpg" 
+               onerror="this.onerror=null; this.src='https://falling-pickaxe.ru/falling-pickaxe-mark.jpg';" 
+               alt="Falling Pickaxe Art" 
+               class="animated-pickaxe">
+        </div>
+      </div>
+
+      <div class="specs-grid">
+        <div class="spec-card">
+          <div class="spec-label" data-i18n="catLabel">Categoria</div>
+          <div class="spec-val" data-i18n="catVal">Instantâneo</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label" data-i18n="maxWinLabel">Ganho Máximo</div>
+          <div class="spec-val">x5000</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label" data-i18n="volatilityLabel">Volatilidade</div>
+          <div class="spec-val" data-i18n="volatilityVal">Baixa</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-label">RTP</div>
+          <div class="spec-val">95%</div>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="https://lkiu.cc/9d7ad6b0" target="_blank" class="btn btn-gold" style="padding: 14px 32px; font-size: 16px;" data-i18n="btnPlayHero">
+          🎮 Jogar Agora
+        </a>
+        <a href="https://t.me/towerrush_casino" target="_blank" class="btn btn-telegram" style="padding: 14px 30px; font-size: 16px;" data-i18n="btnTgHero">
+          ✈️ Canal no Telegram
+        </a>
+      </div>
+    </section>
+
+    <!-- Видео -->
+    <section class="demo-block" id="demo">
+      <h2 class="demo-title" data-i18n="demoTitle">Experimente Agora</h2>
+      <p class="demo-subtitle" data-i18n="demoSubtitle">Uma rápida demonstração para entender a mecânica do jogo em segundos</p>
+
+      <div class="video-wrapper">
+        <video autoplay muted loop playsinline controls preload="auto">
+          <source src="video.mp4" type="video/mp4">
+          Seu navegador não suporta vídeos integrados.
+        </video>
+      </div>
+
+      <div class="hero-actions">
+        <a href="https://lkiu.cc/9d7ad6b0" target="_blank" class="btn btn-gold" data-i18n="btnPlayHero">
+          🎮 Jogar Agora
+        </a>
+        <a href="https://t.me/towerrush_casino" target="_blank" class="btn btn-telegram" data-i18n="btnTgHero">
+          ✈️ Canal no Telegram
+        </a>
+      </div>
+    </section>
+
+    <!-- Механики -->
+    <section id="mechanics">
+      <div class="section-header">
+        <h2 class="section-title" data-i18n="mechHeader">Mecânicas de Falling Pickaxe</h2>
+        <a href="#review" class="section-link" data-i18n="rulesLink">Regras Detalhadas →</a>
+      </div>
+
+      <div class="mechanics-grid">
+        <div class="mechanic-card">
+          <div class="pixel-icon-box">⤹</div>
+          <h3 class="mechanic-title" data-i18n="m1Title">Queda da Picareta</h3>
+          <p class="mechanic-text" data-i18n="m1Desc">Após o lançamento, a picareta selecionada desce e colide sucessivamente com os blocos. A rodada ocorre de forma automática.</p>
+        </div>
+        <div class="mechanic-card">
+          <div class="pixel-icon-box">♥</div>
+          <h3 class="mechanic-title" data-i18n="m2Title">Durabilidade (HP)</h3>
+          <p class="mechanic-text" data-i18n="m2Desc">Os impactos consomem a vida útil da ferramenta. Quando a durabilidade chega a zero, a descida atual é finalizada.</p>
+        </div>
+        <div class="mechanic-card">
+          <div class="pixel-icon-box">◆</div>
+          <h3 class="mechanic-title" data-i18n="m3Title">Minérios Preciosos</h3>
+          <p class="mechanic-text" data-i18n="m3Desc">Cobre, ouro, diamantes e esmeraldas somam prêmios em dinheiro. O valor é exibido em tempo real durante a rodada.</p>
+        </div>
+        <div class="mechanic-card">
+          <div class="pixel-icon-box">+</div>
+          <h3 class="mechanic-title" data-i18n="m4Title">Dinamite (TNT)</h3>
+          <p class="mechanic-text" data-i18n="m4Desc">A explosão abre caminho e ajuda a picareta a continuar sua descida sem sofrer o desgaste de golpes em blocos normais.</p>
+        </div>
+        <div class="mechanic-card">
+          <div class="pixel-icon-box">↑</div>
+          <h3 class="mechanic-title" data-i18n="m5Title">Flecha de Melhoria</h3>
+          <p class="mechanic-text" data-i18n="m5Desc">A flecha verde expande o tamanho do instrumento durante a queda, potencializando sua capacidade no trajeto atual.</p>
+        </div>
+        <div class="mechanic-card">
+          <div class="pixel-icon-box">■</div>
+          <h3 class="mechanic-title" data-i18n="m6Title">Bancada de Trabalho</h3>
+          <p class="mechanic-text" data-i18n="m6Desc">A bancada forja uma picareta superior. Em uma rodada afortunada, a ferramenta de madeira pode evoluir até o nível de diamante.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Кирки (Точный пиксель-арт по вашему образцу) -->
+    <section id="pickaxes" style="margin-top: 60px;">
+      <div class="section-subtitle" data-i18n="pickSubtitle">DURABILIDADE DO INSTRUMENTO</div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 10px;">
+        <h2 class="section-title" data-i18n="pickTitle">Quatro Tipos de Picaretas</h2>
+        <span style="font-size: 13px; color: var(--text-muted);" data-i18n="pickHint">O HP representa a vida útil do instrumento. Cada impacto diminui essa reserva.</span>
+      </div>
+
+      <div class="pickaxes-grid">
+        <!-- 1. Madeira -->
+        <div class="pickaxe-card">
+          <svg class="pickaxe-pixel-svg" viewBox="0 0 16 16">
+            <path d="M5 2h6v1H5z M4 3h1v1H4z M11 3h1v1h-1z M5 5h5v1H5z M10 4h1v1h-1z M12 4h1v1h-1z M13 5h1v6h-1z M11 6h1v5h-1z M12 11h1v1h-1z M8 6h1v1H8z M9 7h1v1H9z M7 7h1v1H7z M8 8h1v1H8z M6 8h1v1H6z M7 9h1v1H7z M5 9h1v1H5z M6 10h1v1H6z M4 10h1v1H4z M5 11h1v1H5z M3 11h1v1H3z M4 12h1v1H4z M2 12h1v2H2z M3 14h1v1H3z M2 14h1v1H2z" fill="#181818"/>
+            <path d="M9 6h1v1H9z M8 7h1v1H8z M7 8h1v1H7z M6 9h1v1H6z M5 10h1v1H5z M4 11h1v1H4z M3 12h1v2H3z" fill="#966826"/>
+            <path d="M3 13h1v1H3z" fill="#8f5b2d"/>
+            <path d="M5 3h6v1H5z M5 4h5v1H5z M11 4h1v2h-1z M12 5h1v6h-1z" fill="#b0743b"/>
+            <path d="M7 3h4v1H7z M12 6h1v4h-1z" fill="#d49455"/>
+          </svg>
+          <span class="hp-badge">100 HP</span>
+          <h3 class="pickaxe-name" data-i18n="p1Name">Madeira</h3>
+          <p class="pickaxe-desc" data-i18n="p1Desc">Ferramenta inicial com durabilidade moderada. Cada colisão contra um bloco reduz gradualmente seu recurso.</p>
+        </div>
+
+        <!-- 2. Pedra -->
+        <div class="pickaxe-card">
+          <svg class="pickaxe-pixel-svg" viewBox="0 0 16 16">
+            <path d="M5 2h6v1H5z M4 3h1v1H4z M11 3h1v1h-1z M5 5h5v1H5z M10 4h1v1h-1z M12 4h1v1h-1z M13 5h1v6h-1z M11 6h1v5h-1z M12 11h1v1h-1z M8 6h1v1H8z M9 7h1v1H9z M7 7h1v1H7z M8 8h1v1H8z M6 8h1v1H6z M7 9h1v1H7z M5 9h1v1H5z M6 10h1v1H6z M4 10h1v1H4z M5 11h1v1H5z M3 11h1v1H3z M4 12h1v1H4z M2 12h1v2H2z M3 14h1v1H3z M2 14h1v1H2z" fill="#181818"/>
+            <path d="M9 6h1v1H9z M8 7h1v1H8z M7 8h1v1H7z M6 9h1v1H6z M5 10h1v1H5z M4 11h1v1H4z M3 12h1v2H3z" fill="#966826"/>
+            <path d="M3 13h1v1H3z" fill="#78716c"/>
+            <path d="M5 3h6v1H5z M5 4h5v1H5z M11 4h1v2h-1z M12 5h1v6h-1z" fill="#78716c"/>
+            <path d="M7 3h4v1H7z M12 6h1v4h-1z" fill="#a8a29e"/>
+          </svg>
+          <span class="hp-badge">150 HP</span>
+          <h3 class="pickaxe-name" data-i18n="p2Name">Pedra</h3>
+          <p class="pickaxe-desc" data-i18n="p2Desc">Uma picareta mais estável, capaz de suportar mais impactos e garantir maiores chances de atingir camadas profundas.</p>
+        </div>
+
+        <!-- 3. Ferro -->
+        <div class="pickaxe-card">
+          <svg class="pickaxe-pixel-svg" viewBox="0 0 16 16">
+            <path d="M5 2h6v1H5z M4 3h1v1H4z M11 3h1v1h-1z M5 5h5v1H5z M10 4h1v1h-1z M12 4h1v1h-1z M13 5h1v6h-1z M11 6h1v5h-1z M12 11h1v1h-1z M8 6h1v1H8z M9 7h1v1H9z M7 7h1v1H7z M8 8h1v1H8z M6 8h1v1H6z M7 9h1v1H7z M5 9h1v1H5z M6 10h1v1H6z M4 10h1v1H4z M5 11h1v1H5z M3 11h1v1H3z M4 12h1v1H4z M2 12h1v2H2z M3 14h1v1H3z M2 14h1v1H2z" fill="#181818"/>
+            <path d="M9 6h1v1H9z M8 7h1v1H8z M7 8h1v1H7z M6 9h1v1H6z M5 10h1v1H5z M4 11h1v1H4z M3 12h1v2H3z" fill="#966826"/>
+            <path d="M3 13h1v1H3z" fill="#e5e7eb"/>
+            <path d="M5 3h6v1H5z M5 4h5v1H5z M11 4h1v2h-1z M12 5h1v6h-1z" fill="#cbd5e1"/>
+            <path d="M7 3h4v1H7z M12 6h1v4h-1z" fill="#ffffff"/>
+          </svg>
+          <span class="hp-badge">200 HP</span>
+          <h3 class="pickaxe-name" data-i18n="p3Name">Ferro</h3>
+          <p class="pickaxe-desc" data-i18n="p3Desc">Reserva de durabilidade reforçada que ajuda a suportar séries de choques e permanecer mais tempo na mina.</p>
+        </div>
+
+        <!-- 4. Diamante -->
+        <div class="pickaxe-card highlight">
+          <svg class="pickaxe-pixel-svg" viewBox="0 0 16 16" style="filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.85));">
+            <path d="M5 2h6v1H5z M4 3h1v1H4z M11 3h1v1h-1z M5 5h5v1H5z M10 4h1v1h-1z M12 4h1v1h-1z M13 5h1v6h-1z M11 6h1v5h-1z M12 11h1v1h-1z M8 6h1v1H8z M9 7h1v1H9z M7 7h1v1H7z M8 8h1v1H8z M6 8h1v1H6z M7 9h1v1H7z M5 9h1v1H5z M6 10h1v1H6z M4 10h1v1H4z M5 11h1v1H5z M3 11h1v1H3z M4 12h1v1H4z M2 12h1v2H2z M3 14h1v1H3z M2 14h1v1H2z" fill="#181818"/>
+            <path d="M9 6h1v1H9z M8 7h1v1H8z M7 8h1v1H7z M6 9h1v1H6z M5 10h1v1H5z M4 11h1v1H4z M3 12h1v2H3z" fill="#966826"/>
+            <path d="M3 13h1v1H3z" fill="#38bdf8"/>
+            <path d="M5 3h6v1H5z M5 4h5v1H5z M11 4h1v2h-1z M12 5h1v6h-1z" fill="#2dd4bf"/>
+            <path d="M7 3h4v1H7z M12 6h1v4h-1z" fill="#a5f3fc"/>
+          </svg>
+          <span class="hp-badge">400 HP</span>
+          <h3 class="pickaxe-name" data-i18n="p4Name">Diamante</h3>
+          <p class="pickaxe-desc" data-i18n="p4Desc">A versão inicial mais poderosa. O HP elevado não garante um valor fixo, mas concede fôlego extra para descer fundo.</p>
+        </div>
+      </div>
+
+      <div class="notice-bar" data-i18n="noticeBar">
+        <strong>Importante:</strong> ferramentas mais resistentes aguentam mais impactos, mas nenhum modelo garante uma profundidade ou prêmio pré-determinado.
+      </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section id="reviews" style="margin-top: 60px;">
+      <h2 class="section-title" style="margin-bottom: 24px;" data-i18n="revTitle">Avaliações dos Jogadores</h2>
+      <div class="reviews-grid" id="reviewsGrid"></div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="margin-top: 60px;">
+      <h2 class="section-title" style="margin-bottom: 24px;" data-i18n="faqTitle">FAQ - Perguntas Frequentes</h2>
+      <div class="faq-list">
+        <details open>
+          <summary data-i18n="q1">O que é o Falling Pickaxe?</summary>
+          <p data-i18n="a1">Falling Pickaxe é um jogo instantâneo inspirado no universo de Minecraft, onde uma picareta despenca pelas camadas de blocos acumulando minérios valiosos e multiplicadores de aposta.</p>
+        </details>
+        <details>
+          <summary data-i18n="q2">Onde jogar Falling Pickaxe?</summary>
+          <p data-i18n="a2">Falling Pickaxe está disponível exclusivamente na plataforma 1win.</p>
+        </details>
+        <details>
+          <summary data-i18n="q3">Existem giros grátis (free spins)?</summary>
+          <p data-i18n="a3">Sim, o jogo conta com bônus, rodadas gratuitas e mecânicas de melhoria na bancada de trabalho que desbloqueiam maiores multiplicadores.</p>
+        </details>
+        <details>
+          <summary data-i18n="q4">O Falling Pickaxe funciona no celular?</summary>
+          <p data-i18n="a4">Sim, o slot é totalmente otimizado e roda com fluidez em qualquer navegador móvel para Android e iOS sem precisar instalar nada.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Статья -->
+    <section class="article-box" id="review">
+      <h2 data-i18n="artTitle">Sobre o Slot Falling Pickaxe na 1win</h2>
+      <p data-i18n="artP1">
+        Falling Pickaxe é o novo slot exclusivo da plataforma 1win, inspirado no universo de Minecraft. Prepare-se para vivenciar símbolos em cascata, multiplicadores crescentes, bônus épicos e a chance real de faturar até ×5000 sobre o valor da sua aposta!
+      </p>
+      <p data-i18n="artP2">
+        A jogabilidade combina o suspense das quedas com o gerenciamento de durabilidade das ferramentas e acúmulo de multiplicadores. Cada bloco destruído garante recursos preciosos, abrindo caminho para as profundezas da mina onde se escondem as gemas raras e os maiores prêmios.
+      </p>
+    </section>
+  </main>
+
+  <!-- Футер -->
+  <footer>
+    <p class="disclaimer" data-i18n="disclaimer">JOGUE COM RESPONSABILIDADE. DESTINADO APENAS A MAIORES DE 18 ANOS.</p>
+    <p>© 2026 FALLING PICKAXE | 1WIN. <span data-i18n="rights">TODOS OS DIREITOS RESERVADOS.</span></p>
+  </footer>
+
+  <!-- Модальное окно бонуса -->
+  <div class="modal-overlay" id="bonusModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="document.getElementById('bonusModal').style.display='none'">✕</button>
+      <div style="font-weight:700; color:var(--gold); margin-bottom:4px;" data-i18n="modalTitle">⛏ 50 Giros Grátis Disponíveis</div>
+      <div style="font-size:13px; color:var(--text-muted); margin-bottom:12px;" data-i18n="modalDesc">Aproveite a oferta exclusiva na 1win e comece a jogar agora mesmo.</div>
+      <a href="https://lkiu.cc/9d7ad6b0" target="_blank" class="btn btn-gold" style="width: 100%;" data-i18n="modalBtn">Resgatar Bônus</a>
+    </div>
+  </div>
+
+  <!-- МОДУЛЬ ЗАЩИТЫ + ЗАШИФРОВАННЫЙ ДВИЖОК САЙТА -->
+  <script>
+    /* ===================================================
+       1. СИСТЕМА ЗАЩИТЫ ОТ КОПИРОВАНИЯ И РАЗРАБОТЧИКА
+    =================================================== */
+    (function protectSystem() {
+      document.addEventListener('contextmenu', e => e.preventDefault());
+
+      document.addEventListener('keydown', e => {
+        if (e.keyCode === 123) { e.preventDefault(); return false; }
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) { e.preventDefault(); return false; }
+        if ((e.ctrlKey || e.metaKey) && (e.keyCode === 85 || e.keyCode === 83)) { e.preventDefault(); return false; }
+      });
+
+      setInterval(() => {
+        const start = performance.now();
+        (function() { Function("debugger")(); })();
+        if (performance.now() - start > 100) {
+          console.clear();
+        }
+      }, 1000);
+    })();
+
+    /* ===================================================
+       2. ДВИЖОК МУЛЬТИЯЗЫЧНОСТИ, ГЕО И ОНЛАЙНА
+    =================================================== */
+    (function initSecureEngine() {
+      const _0xDict = {
+        pt: {
+          metaTitle: "Falling Pickaxe — Slot no estilo Minecraft na 1win | Jogar Online",
+          navDemo: "Demo", navHome: "Início", navHow: "Como Jogar", navReviews: "Avaliações", navFaq: "FAQ", navArticles: "Artigos",
+          btnPlayNav: "Jogar", badgeSpins: "🎁 Giros Grátis", badgeBonus: "💎 Bônus de até ×5000", badgeMobile: "📱 Compatível com Celular",
+          heroTitle: "Falling Pickaxe — Slot no estilo Minecraft",
+          heroDesc: "Lance a picareta e observe a terra voar enquanto ela quebra bloco após bloco em sua descida. Cada golpe reduz a durabilidade da ferramenta, mas com um acerto de sorte você encontrará cobre, ouro, diamante ou esmeralda. Enquanto a TNT limpa o caminho, a flecha de melhoria aumenta o tamanho da ferramenta em pleno vôo, e a bancada de trabalho a transforma em algo muito mais resistente. Um único lançamento pode transformar uma modesta picareta de madeira em uma escavadeira de diamante — e quanto mais fundo ela cair, maiores serão os seus ganhos.",
+          catLabel: "Categoria", catVal: "Instantâneo", maxWinLabel: "Ganho Máximo", volatilityLabel: "Volatilidade", volatilityVal: "Baixa",
+          btnPlayHero: "🎮 Jogar Agora", btnTgHero: "✈️ Canal no Telegram",
+          demoTitle: "Experimente Agora", demoSubtitle: "Uma rápida demonstração para entender a mecânica do jogo em segundos",
+          mechHeader: "Mecânicas de Falling Pickaxe", rulesLink: "Regras Detalhadas →",
+          m1Title: "Queda da Picareta", m1Desc: "Após o lançamento, a picareta selecionada desce e colide sucessivamente com os blocos. A rodada ocorre de forma automática.",
+          m2Title: "Durabilidade (HP)", m2Desc: "Os impactos consomem a vida útil da ferramenta. Quando a durabilidade chega a zero, a descida atual é finalizada.",
+          m3Title: "Minérios Preciosos", m3Desc: "Cobre, ouro, diamantes e esmeraldas somam prêmios em dinheiro. O valor é exibido em tempo real durante a rodada.",
+          m4Title: "Dinamite (TNT)", m4Desc: "A explosão abre caminho e ajuda a picareta a continuar sua descida sem sofrer o desgaste de golpes em blocos normais.",
+          m5Title: "Flecha de Melhoria", m5Desc: "A flecha verde expande o tamanho do instrumento durante a queda, potencializando sua capacidade no trajeto atual.",
+          m6Title: "Bancada de Trabalho", m6Desc: "A bancada forja uma picareta superior. Em uma rodada afortunada, a ferramenta de madeira pode evoluir até o nível de diamante.",
+          pickSubtitle: "DURABILIDADE DO INSTRUMENTO", pickTitle: "Quatro Tipos de Picaretas", pickHint: "O HP representa a vida útil do instrumento. Cada impacto diminui essa reserva.",
+          p1Name: "Madeira", p1Desc: "Ferramenta inicial com durabilidade moderada. Cada colisão contra um bloco reduz gradualmente seu recurso.",
+          p2Name: "Pedra", p2Desc: "Uma picareta mais estável, capaz de suportar mais impactos e garantir maiores chances de atingir camadas profundas.",
+          p3Name: "Ferro", p3Desc: "Reserva de durabilidade reforçada que ajuda a suportar séries de choques e permanecer mais tempo na mina.",
+          p4Name: "Diamante", p4Desc: "A versão inicial mais poderosa. O HP elevado não garante um valor fixo, mas concede fôlego extra para descer fundo.",
+          noticeBar: "<strong>Importante:</strong> ferramentas mais resistentes aguentam mais impactos, mas nenhum modelo garante uma profundidade ou prêmio pré-determinado.",
+          revTitle: "Avaliações dos Jogadores", faqTitle: "FAQ - Perguntas Frequentes",
+          q1: "O que é o Falling Pickaxe?", a1: "Falling Pickaxe é um jogo instantâneo inspirado no universo de Minecraft, onde uma picareta despenca pelas camadas de blocos acumulando minérios valiosos e multiplicadores de aposta.",
+          q2: "Onde jogar Falling Pickaxe?", a2: "Falling Pickaxe está disponível exclusivamente na plataforma 1win.",
+          q3: "Existem giros grátis (free spins)?", a3: "Sim, o jogo conta com bônus, rodadas gratuitas e mecânicas de melhoria na bancada de trabalho que desbloqueiam maiores multiplicadores.",
+          q4: "O Falling Pickaxe funciona no celular?", a4: "Sim, o slot é totalmente otimizado e roda com fluidez em qualquer navegador móvel para Android e iOS sem precisar instalar nada.",
+          artTitle: "Sobre o Slot Falling Pickaxe na 1win",
+          artP1: "Falling Pickaxe é o novo slot exclusivo da plataforma 1win, inspirado no universo de Minecraft. Prepare-se para vivenciar símbolos em cascata, multiplicadores crescentes, bônus épicos e a chance real de faturar até ×5000 sobre o valor da sua aposta!",
+          artP2: "A jogabilidade combina o suspense das quedas com o gerenciamento de durabilidade das ferramentas e acúmulo de multiplicadores. Cada bloco destruído garante recursos preciosos, abrindo caminho para as profundezas da mina onde se escondem as gemas raras e os maiores prêmios.",
+          disclaimer: "JOGUE COM RESPONSABILIDADE. DESTINADO APENAS A MAIORES DE 18 ANOS.", rights: "TODOS OS DIREITOS RESERVADOS.",
+          modalTitle: "⛏ 50 Giros Grátis Disponíveis", modalDesc: "Aproveite a oferta exclusiva na 1win e comece a jogar agora mesmo.", modalBtn: "Resgatar Bônus",
+          onlineWord: "Online", winWord: "ganhou", currency: "R$ ",
+          reviews: [
+            { name: "Lucas, 34", city: "São Paulo", rate: "5.0", stars: "★★★★★", text: "No começo achei que era só mais um crash game com tema de Minecraft, mas Falling Pickaxe me surpreendeu. O tipo de picareta que sai faz toda a diferença. A de diamante cava muito fundo!" },
+            { name: "Beatriz, 27", city: "Rio de Janeiro", rate: "5.0", stars: "★★★★★", text: "Apaixonada por esse jogo! Ver a picareta descendo e o multiplicador subindo é emocionante. Peguei 80x e saquei na hora!" },
+            { name: "Rodrigo, 39", city: "Lisboa", rate: "4.0", stars: "★★★★☆", text: "A mecânica é bem pensada: gasta energia e, com sorte nos blocos, vai longe. Quando acerta os blocos de diamante o retorno compensa." },
+            { name: "Camila, 23", city: "Belo Horizonte", rate: "5.0", stars: "★★★★★", text: "Toda a ambientação de Minecraft é bem feita. Consegui 25x com a de pedra e já garanti um tênis novo!" },
+            { name: "Gabriel, 41", city: "Curitiba", rate: "5.0", stars: "★★★★★", text: "Cansado de slots tradicionais. Aqui tem mina, picareta e blocos. O meu maior acerto foi 50x." },
+            { name: "Mariana, 30", city: "Porto", rate: "5.0", stars: "★★★★★", text: "Pixel art lindo, efeitos sonoros fiéis ao Minecraft. Encerrei em 30x e retirei na hora. Excelente!" }
+          ]
+        },
+        ru: {
+          metaTitle: "Falling Pickaxe — слот в стиле Майнкрафт на 1win | Играть онлайн",
+          navDemo: "Демо", navHome: "Главная", navHow: "Как играть", navReviews: "Отзывы", navFaq: "FAQ", navArticles: "Статьи",
+          btnPlayNav: "Играть", badgeSpins: "🎁 фриспины", badgeBonus: "💎 бонусы до ×5000", badgeMobile: "📱 подходит для телефона",
+          heroTitle: "Falling Pickaxe — слот в стиле Майнкрафт",
+          heroDesc: "Бросьте кирку и наблюдайте, как летит грязь, когда она пробивает блок за блоком на пути вниз. Каждый удар снижает прочность инструмента, но при удачном попадании вы получите медь, золото, алмаз или изумруд. Пока тротил расчищает путь, стрелка улучшения увеличивает размер инструмента прямо в полете, а верстак превращает его во что-то более прочное. Один бросок может превратить скромную деревянную кирку в алмазную копалку, и чем глубже она падает, тем больше добыча.",
+          catLabel: "Категория", catVal: "Мгновенный", maxWinLabel: "Макс. выигрыш", volatilityLabel: "Волатильность", volatilityVal: "Низкая",
+          btnPlayHero: "🎮 Играть сейчас", btnTgHero: "✈️ Telegram канал",
+          demoTitle: "Просто попробуй", demoSubtitle: "Короткое демо, чтобы понять механику игры за секунды",
+          mechHeader: "Механики Falling Pickaxe", rulesLink: "Подробные правила →",
+          m1Title: "Падение кирки", m1Desc: "После запуска выбранная кирка движется вниз и последовательно сталкивается с блоками. Раунд идёт автоматически.",
+          m2Title: "Запас прочности", m2Desc: "Удары расходуют HP инструмента. Когда прочность заканчивается, текущее падение завершается.",
+          m3Title: "Ценные ресурсы", m3Desc: "Медь, золото, алмазы и изумруды могут добавить выплату. Значение видно прямо во время раунда.",
+          m4Title: "TNT", m4Desc: "Взрыв расчищает часть пути и помогает кирке продолжить движение без обычной серии ударов по блокам.",
+          m5Title: "Стрелка улучшения", m5Desc: "Зелёная стрелка увеличивает инструмент во время падения и меняет его возможности в текущем маршруте.",
+          m6Title: "Верстак", m6Desc: "Верстак перековывает кирку в более сильную. За один удачный раунд деревянный инструмент может повысить уровень вплоть до алмазного.",
+          pickSubtitle: "ПРОЧНОСТЬ ИНСТРУМЕНТА", pickTitle: "Четыре вида кирок", pickHint: "HP показывает, сколько ресурса есть у инструмента. Каждый удар уменьшает запас.",
+          p1Name: "Деревянная", p1Desc: "Начальный инструмент с небольшим запасом прочности. Каждое столкновение с блоком уменьшает его ресурс.",
+          p2Name: "Каменная", p2Desc: "Более стойкая кирка, которая в среднем выдерживает больше ударов и получает шанс пройти глубже.",
+          p3Name: "Железная", p3Desc: "Увеличенный запас прочности помогает пережить серию столкновений и дольше оставаться в шахте.",
+          p4Name: "Алмазная", p4Desc: "Самый прочный стартовый вариант из показанных в игре. Высокий запас HP не гарантирует результат, но даёт больше ресурса для падения.",
+          noticeBar: "<strong>Важно:</strong> более прочная кирка способна выдержать больше ударов, но ни один тип инструмента не гарантирует заданную глубину или выплату.",
+          revTitle: "Отзывы игроков", faqTitle: "FAQ - Частые вопросы",
+          q1: "Что такое Falling Pickaxe?", a1: "Falling Pickaxe - игра в стиле Майнкрафт, где кирка падает вниз через толщу блоков, собирая руду и множители выигрыша.",
+          q2: "Где играть в Falling Pickaxe?", a2: "Falling Pickaxe доступен только на платформе 1win.",
+          q3: "Есть ли фриспины?", a3: "Да, в игре есть бонусы, фриспины и механика верстака с улучшениями, которая помогает открывать новые возможности.",
+          q4: "Falling Pickaxe подходит для телефона?", a4: "Да, слот полностью адаптирован под мобильные браузеры Android и iOS.",
+          artTitle: "О слоте Falling Pickaxe на 1win",
+          artP1: "Falling Pickaxe — это новый слот на платформе 1win, выполненный в стиле Майнкрафт. Здесь тебя ждут каскадные символы, множители, эпичные бонусы и шанс выиграть до ×5000 твоей ставки!",
+          artP2: "Игровой процесс сочетает механику падения, прочности инструментов и накопления множителей. Каждый разрушенный блок приносит ресурсы, открывая путь к глубоким горизонтам шахты, где спрятаны самые ценные самоцветы.",
+          disclaimer: "ИГРАЙТЕ ОТВЕТСТВЕННО. ТОЛЬКО ДЛЯ ЛИЦ СТАРШЕ 18 ЛЕТ.", rights: "ВСЕ ПРАВА ЗАЩИЩЕНЫ.",
+          modalTitle: "⛏ Доступно 50 фриспинов", modalDesc: "Забери предложение на 1win и переходи в игру прямо сейчас.", modalBtn: "Забрать бонус",
+          onlineWord: "Онлайн", winWord: "выиграл", currency: "₽ ",
+          reviews: [
+            { name: "Данил, 34", city: "Екатеринбург", rate: "5.0", stars: "★★★★★", text: "Сначала думал, что это просто краш-игра с майнкрафт-обёрткой, но Falling Pickaxe оказалась глубже. Тут важно, какая кирка выпала. Деревянная быстро ломается, а алмазная реально позволяет копать на большую глубину." },
+            { name: "Кристина, 27", city: "Казань", rate: "5.0", stars: "★★★★★", text: "Влюбилась в эту игру! Кирка летит вниз, разрушает блоки, а множитель растёт. Алмазная кирка с 400 HP шикарна. Словила х80!" },
+            { name: "Роман, 39", city: "Новосибирск", rate: "4.0", stars: "★★★★☆", text: "Механика интересная: кирка падает, тратит прочность, и если повезёт с блоками, углубляется далеко. На редстоуне и алмазах отдача отличная." },
+            { name: "Алёна, 23", city: "Краснодар", rate: "5.0", stars: "★★★★★", text: "Falling Pickaxe — просто восторг! Всё в стиле Майнкрафта. Поймала каменную кирку и выиграла х25, купила кроссовки!" },
+            { name: "Игорь, 41", city: "Нижний Новгород", rate: "5.0", stars: "★★★★★", text: "Обычные барабаны надоели, а тут шахта, кирка, блоки. Геймплей затягивает, максимально ловил х50." },
+            { name: "Марина, 30", city: "Ростов-на-Дону", rate: "5.0", stars: "★★★★★", text: "Очень красивая игра. Пиксельная графика, приятные звуки. Чем глубже — тем больше выигрыш. Вывела х30!" }
+          ]
+        },
+        en: {
+          metaTitle: "Falling Pickaxe — Minecraft-style Slot on 1win | Play Online",
+          navDemo: "Demo", navHome: "Home", navHow: "How to Play", navReviews: "Reviews", navFaq: "FAQ", navArticles: "Articles",
+          btnPlayNav: "Play", badgeSpins: "🎁 Free Spins", badgeBonus: "💎 Bonuses up to ×5000", badgeMobile: "📱 Mobile Friendly",
+          heroTitle: "Falling Pickaxe — Minecraft-style Slot",
+          heroDesc: "Throw your pickaxe and watch the dirt fly as it smashes block after block on its way down. Each strike reduces durability, but with luck, you'll uncover copper, gold, diamonds, or emeralds. As TNT clears the way, the upgrade arrow enlarges the tool mid-flight, and the crafting table enhances its power. A single drop can turn a humble wooden pickaxe into a diamond excavator!",
+          catLabel: "Category", catVal: "Instant", maxWinLabel: "Max Win", volatilityLabel: "Volatility", volatilityVal: "Low",
+          btnPlayHero: "🎮 Play Now", btnTgHero: "✈️ Telegram Channel",
+          demoTitle: "Just Try It", demoSubtitle: "A quick demo to master the gameplay mechanics in seconds",
+          mechHeader: "Falling Pickaxe Mechanics", rulesLink: "Detailed Rules →",
+          m1Title: "Pickaxe Descent", m1Desc: "Once launched, the chosen pickaxe drops automatically, breaking through consecutive layers of mine blocks.",
+          m2Title: "Durability (HP)", m2Desc: "Block impacts consume tool HP. When durability reaches zero, the current descent ends.",
+          m3Title: "Precious Minerals", m3Desc: "Copper, gold, diamonds, and emeralds multiply cash prizes. Real-time payouts show on screen.",
+          m4Title: "TNT Explosives", m4Desc: "TNT blasts clear big underground cavities, preserving your pickaxe durability for deeper depths.",
+          m5Title: "Upgrade Arrow", m5Desc: "Green arrows instantly upgrade the tool size during flight, boosting destructive radius.",
+          m6Title: "Crafting Table", m6Desc: "The workbench reforges your tool into a higher tier. Wooden gear can evolve all the way to diamond.",
+          pickSubtitle: "TOOL DURABILITY", pickTitle: "Four Pickaxe Tiers", pickHint: "HP measures the remaining lifespan of your mining tool.",
+          p1Name: "Wooden", p1Desc: "Starting tier with standard HP. Every block hit gradually reduces its durability.",
+          p2Name: "Stone", p2Desc: "Sturdier option capable of absorbing more block collisions for deeper dives.",
+          p3Name: "Iron", p3Desc: "High durability buffer built to withstand dense obstacles and sustain drops.",
+          p4Name: "Diamond", p4Desc: "The supreme mining tool. Massive HP pool giving the maximum chance to hit deep multipliers.",
+          noticeBar: "<strong>Important:</strong> higher durability increases longevity, but no tool guarantees an exact depth or win amount.",
+          revTitle: "Player Reviews", faqTitle: "FAQ - Frequently Asked Questions",
+          q1: "What is Falling Pickaxe?", a1: "Falling Pickaxe is an instant Minecraft-inspired mining slot where a falling pickaxe destroys mineral blocks to trigger progressive prize multipliers.",
+          q2: "Where can I play Falling Pickaxe?", a2: "Falling Pickaxe is available exclusively on the 1win platform.",
+          q3: "Are there free spins?", a3: "Yes, free spin mechanics and crafting enhancements reward lucky drops with high payout multipliers.",
+          q4: "Does it work on mobile?", a4: "Yes, the slot runs seamlessly on modern Android and iOS mobile browsers without app downloads.",
+          artTitle: "About Falling Pickaxe Slot on 1win",
+          artP1: "Falling Pickaxe is the hit Minecraft-themed casual slot game on 1win. Enjoy cascading block breaks, dynamic multipliers, and win potentials up to 5000x your bet!",
+          artP2: "The game loop combines physics drops with tool durability strategies. Smash rare gems deep underground for exponential win coefficients.",
+          disclaimer: "PLAY RESPONSIBLY. 18+ ADULTS ONLY.", rights: "ALL RIGHTS RESERVED.",
+          modalTitle: "⛏ 50 Free Spins Available", modalDesc: "Claim your special welcome perk on 1win and jump into the mine now.", modalBtn: "Claim Bonus",
+          onlineWord: "Online", winWord: "won", currency: "$",
+          reviews: [
+            { name: "Oliver, 31", city: "London", rate: "5.0", stars: "★★★★★", text: "Thought it was a generic crash title at first, but the pickaxe crafting and block layers add genuine depth. Diamond tool runs are insane!" },
+            { name: "David, 28", city: "Toronto", rate: "5.0", stars: "★★★★★", text: "Watching the pickaxe plunge through diamond blocks with multiplying cash values is super satisfying. Hit 85x multiplier today!" },
+            { name: "Liam, 35", city: "Sydney", rate: "4.0", stars: "★★★★☆", text: "Great visuals and sound effects. Fast payouts on 1win. Diamond pickaxe gives awesome returns." },
+            { name: "Sophie, 24", city: "Dublin", rate: "5.0", stars: "★★★★★", text: "Super nostalgic Minecraft vibes! Love the upgrades and TNT blocks that keep the run alive. 10/10 casual slot." },
+            { name: "Kenji, 39", city: "Tokyo", rate: "5.0", stars: "★★★★★", text: "Smooth animations and fast round cycles. Perfect mobile game while on the go. Consistently good payouts." },
+            { name: "Noah, 29", city: "Chicago", rate: "5.0", stars: "★★★★★", text: "Best mining slot game out right now. Simple, engaging, and instant withdrawals on 1win make it a winner." }
+          ]
+        },
+        es: {
+          metaTitle: "Falling Pickaxe — Slot estilo Minecraft en 1win | Jugar Online",
+          navDemo: "Demo", navHome: "Inicio", navHow: "Cómo Jugar", navReviews: "Opiniones", navFaq: "FAQ", navArticles: "Artículos",
+          btnPlayNav: "Jugar", badgeSpins: "🎁 Giros Gratis", badgeBonus: "💎 Bonos de hasta ×5000", badgeMobile: "📱 Para Móviles",
+          heroTitle: "Falling Pickaxe — Slot estilo Minecraft",
+          heroDesc: "Lanza tu pico y mira volar la tierra mientras rompe bloque tras bloque en su camino hacia abajo. Cada golpe reduce la durabilidad, pero con suerte encontrarás cobre, oro, diamantes o esmeraldas. La dinamita despeja el camino, la flecha verde aumenta el tamaño de la herramienta en pleno vuelo y la mesa de trabajo la transforma en una versión legendaria.",
+          catLabel: "Categoría", catVal: "Instantáneo", maxWinLabel: "Premio Máximo", volatilityLabel: "Volatilidad", volatilityVal: "Baja",
+          btnPlayHero: "🎮 Jugar Ahora", btnTgHero: "✈️ Canal de Telegram",
+          demoTitle: "Pruébalo Ahora", demoSubtitle: "Demostración rápida para dominar la mecánica del juego en segundos",
+          mechHeader: "Mecánicas de Falling Pickaxe", rulesLink: "Reglas Detalhadas →",
+          m1Title: "Caída del Pico", m1Desc: "Tras el lanzamiento, el pico desciende rompiendo bloques en una ronda completamente automática.",
+          m2Title: "Durabilidade (HP)", m2Desc: "Los impactos gastan la vida útil. Al llegar a cero, finaliza la caída actual.",
+          m3Title: "Minerales Valiosos", m3Desc: "Cobre, oro, diamantes y esmeraldas aumentan las recompensas en efectivo en tiempo real.",
+          m4Title: "Dinamita (TNT)", m4Desc: "La explosión abre camino y permite descender sin gastar golpes en bloques comunes.",
+          m5Title: "Flecha de Mejora", m5Desc: "Aumenta el tamaño del pico en plena caída, potenciando su poder destructivo.",
+          m6Title: "Mesa de Crafteo", m6Desc: "Forja herramientas superiores. Una picota de madera puede convertirse en diamante.",
+          pickSubtitle: "DURABILIDAD DE HERRAMIENTA", pickTitle: "Cuatro Tipos de Picos", pickHint: "El HP indica la vida útil restante de la herramienta.",
+          p1Name: "Madera", p1Desc: "Pico inicial con durabilidad básica para las capas superficiales.",
+          p2Name: "Piedra", p2Desc: "Opción más resistente capaz de soportar más choques subterráneos.",
+          p3Name: "Hierro", p3Desc: "Excelente reserva de HP para aguantar largas series de impactos.",
+          p4Name: "Diamante", p4Desc: "La herramienta suprema con 400 HP para alcanzar las mayores profundidades.",
+          noticeBar: "<strong>Importante:</strong> mayor durabilidad permite cavar más, pero ninguna herramienta garantiza un premio fijo.",
+          revTitle: "Opiniones de Jugadores", faqTitle: "FAQ - Preguntas Frecuentes",
+          q1: "¿Qué es Falling Pickaxe?", a1: "Es un slot instantáneo estilo Minecraft donde un pico en caída libre destruye bloques y acumula multiplicadores.",
+          q2: "¿Dónde jugar a Falling Pickaxe?", a2: "Está disponible exclusivamente en la plataforma 1win.",
+          q3: "¿Hay tiradas gratis?", a3: "Sí, cuenta con bonificaciones y giros gratis con multiplicadores crecientes.",
+          q4: "¿Funciona en móviles?", a4: "Sí, el juego está 100% optimizado para navegadores Android e iOS.",
+          artTitle: "Sobre el Slot Falling Pickaxe en 1win",
+          artP1: "Falling Pickaxe es la gran novedad de 1win inspirada en Minecraft. ¡Disfruta de símbolos en cascada y premios de hasta ×5000!",
+          artP2: "El juego combina mecánicas de caída libre y gestión de durabilidad con multiplicadores de alto impacto.",
+          disclaimer: "JUEGA CON RESPONSABILIDAD. SOLO PARA MAYORES DE 18 AÑOS.", rights: "TODOS LOS DERECHOS RESERVADOS.",
+          modalTitle: "⛏ 50 Giros Gratis Disponibles", modalDesc: "Aprovecha la promoción en 1win y juega ahora mismo.", modalBtn: "Reclamar Bono",
+          onlineWord: "Online", winWord: "ganó", currency: "$",
+          reviews: [
+            { name: "Mateo, 32", city: "Ciudad de México", rate: "5.0", stars: "★★★★★", text: "¡Gran juego! La estética retro de Minecraft combinada con la emoción de los multiplicadores es genial. Cobré 50x ayer." },
+            { name: "Carlos, 26", city: "Bogotá", rate: "5.0", stars: "★★★★★", text: "El pico de diamante con 400 HP es una bestia. Cavas súper hondo y el retiro en 1win es inmediato." },
+            { name: "Javier, 38", city: "Buenos Aires", rate: "4.0", stars: "★★★★☆", text: "Muy entretenido y adictivo. Excelente animación de los bloques rompiéndose." },
+            { name: "Valentina, 24", city: "Santiago", rate: "5.0", stars: "★★★★★", text: "Me encanta que sea tan fluido en celular. ¡Multipliqué mi saldo por 30x en 10 minutos!" },
+            { name: "Andrés, 40", city: "Lima", rate: "5.0", stars: "★★★★★", text: "Mucho mejor que las tragamonedas clásicas. Los bloques de dinamita salvan la jugada." },
+            { name: "Lucía, 29", city: "Montevideo", rate: "5.0", stars: "★★★★★", text: "Los sonidos, los gráficos y los premios son increíbles. Recomendado al 100%." }
+          ]
+        }
+      };
+
+      let _activeLang = 'pt';
+
+      window.switchLanguage = function(l) {
+        if (!_0xDict[l]) l = 'en';
+        _activeLang = l;
+        document.documentElement.lang = l;
+        document.getElementById('langSelect').value = l;
+
+        const d = _0xDict[l];
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const k = el.getAttribute('data-i18n');
+          if (d[k]) {
+            if (k === 'noticeBar') el.innerHTML = d[k];
+            else el.textContent = d[k];
+          }
+        });
+
+        // Отрисовка отзывов под язык
+        const grid = document.getElementById('reviewsGrid');
+        grid.innerHTML = d.reviews.map(r => `
+          <div class="review-card">
+            <div class="review-header">
+              <div class="user-info">
+                <div class="user-avatar">${r.name.charAt(0)}</div>
+                <div class="user-details">
+                  <h4>${r.name}</h4>
+                  <span>${r.city}</span>
+                </div>
+              </div>
+              <span class="rating-badge">${r.rate}</span>
+            </div>
+            <div class="stars">${r.stars}</div>
+            <p class="review-text">${r.text}</p>
+          </div>
+        `).join('');
+
+        // Бегущая строка
+        const pList = [
+          { name: "Lucas", flag: "🇧🇷" }, { name: "Mateo", flag: "🇲🇽" }, { name: "Alex", flag: "🇩🇪" },
+          { name: "David", flag: "🇺🇸" }, { name: "Rodrigo", flag: "🇵🇹" }, { name: "Dmitry", flag: "🇷🇺" },
+          { name: "Carlos", flag: "🇨🇴" }, { name: "Oliver", flag: "🇬🇧" }, { name: "Gabriel", flag: "🇧🇷" },
+          { name: "Kenji", flag: "🇯🇵" }, { name: "Javier", flag: "🇦🇷" }, { name: "Sergey", flag: "🇰🇿" }
+        ];
+        const ticker = document.getElementById('tickerTrack');
+        const h = pList.map(p => {
+          const val = (Math.floor(Math.random() * 4500) + 120).toLocaleString();
+          return `
+            <div class="win-bubble">
+              <span>${p.flag}</span>
+              <span>${p.name} ${d.winWord}</span>
+              <span class="win-amount">${d.currency}${val}</span>
+            </div>
+          `;
+        }).join('');
+        ticker.innerHTML = h + h;
+      };
+
+      // Авто-ГЕО
+      async function detectGeo() {
+        let initialLang = 'en';
+        const bl = (navigator.language || '').toLowerCase();
+        if (bl.startsWith('pt')) initialLang = 'pt';
+        else if (bl.startsWith('ru')) initialLang = 'ru';
+        else if (bl.startsWith('es')) initialLang = 'es';
+
+        window.switchLanguage(initialLang);
+
+        try {
+          const res = await fetch('https://ipapi.co/json/');
+          if (res.ok) {
+            const data = await res.json();
+            const c = data.country_code;
+            if (['BR', 'PT', 'AO', 'MZ'].includes(c)) window.switchLanguage('pt');
+            else if (['RU', 'BY', 'KZ', 'UA', 'UZ', 'KG', 'TJ'].includes(c)) window.switchLanguage('ru');
+            else if (['ES', 'MX', 'AR', 'CO', 'CL', 'PE', 'VE'].includes(c)) window.switchLanguage('es');
+            else window.switchLanguage('en');
+          }
+        } catch (e) {
+          // fallback к браузерному языку
+        }
+      }
+
+      // Естественный динамический счетчик онлайна (185 - 295 чел.)
+      let onlineUsers = 247;
+      setInterval(() => {
+        const delta = Math.floor(Math.random() * 7) - 3;
+        onlineUsers = Math.max(185, Math.min(295, onlineUsers + delta));
+        const el = document.getElementById('onlineCount');
+        if (el) el.textContent = onlineUsers.toLocaleString();
+      }, 4000);
+
+      document.addEventListener('DOMContentLoaded', detectGeo);
+    })();
+  </script>
+</body>
+</html>
