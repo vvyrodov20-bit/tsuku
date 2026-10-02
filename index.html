@@ -9259,13 +9259,21 @@ function getPaymentConfig(country) {
     }
 
     function closeWinModalToBlock() {
-      document.getElementById('winModal').style.display = 'none';
+      const modal = document.getElementById('winModal');
+      if (modal) modal.style.display = 'none';
+
+      // After the win, show only the embedded reward card.
+      // Hide the main CTA so there is only one reward button on screen.
       const fatBtn = document.getElementById('fatCta');
-      if (fatBtn) fatBtn.style.display = 'none';
+      if (fatBtn) {
+        fatBtn.style.display = 'none';
+        fatBtn.style.visibility = 'visible';
+      }
 
       const embeddedCard = document.getElementById('embeddedWinCard');
       if (embeddedCard) {
         embeddedCard.style.display = 'block';
+        embeddedCard.style.visibility = 'visible';
         embeddedCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     }
