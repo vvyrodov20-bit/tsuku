@@ -1,0 +1,9 @@
+{
+  "name": "falling-pickaxe-vercel",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Falling Pickaxe site with Vercel tracking, 1win postbacks and two independent Telegram bots",
+  "engines": {
+    "node": "20.x"
+  }
+}
