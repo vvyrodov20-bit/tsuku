@@ -1,0 +1,25 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/go/1win",
+      "destination": "/api/go/1win"
+    },
+    {
+      "source": "/tt1",
+      "destination": "/"
+    },
+    {
+      "source": "/tt2",
+      "destination": "/"
+    },
+    {
+      "source": "/ig1",
+      "destination": "/"
+    },
+    {
+      "source": "/fb1",
+      "destination": "/"
+    }
+  ]
+}
