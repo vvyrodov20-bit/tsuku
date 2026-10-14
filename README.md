@@ -186,6 +186,14 @@ https://YOUR-DOMAIN/api/postback/1win/registration?secret=YOUR_SECRET&event_id={
 https://YOUR-DOMAIN/api/postback/1win/first-deposit?secret=YOUR_SECRET&event_id={event_id}&date={date}&hash_id={hash_id}&hash_name={hash_name}&source_id={source_id}&source_name={source_name}&amount={amount}&transaction_id={transaction_id}&country={country}&user_id={user_id}&sub1={sub1}&sub2={sub2}&sub3={sub3}&sub4={sub4}&sub5={sub5}&sub6={sub6}&sub7={sub7}&sub8={sub8}&sub9={sub9}&sub10={sub10}
 ```
 
+**Все депозиты (рекомендуется вместе с FTD)**
+
+```text
+https://YOUR-DOMAIN/api/postback/1win/all-deposits?secret=YOUR_SECRET&event_id={event_id}&date={date}&transaction_id={transaction_id}&user_id={user_id}&amount={amount}&country={country}&source_name={source_name}&sub1={sub1}&sub2={sub2}&sub3={sub3}&sub4={sub4}&sub5={sub5}&sub6={sub6}&sub7={sub7}&sub8={sub8}&sub9={sub9}&sub10={sub10}
+```
+
+Первый депозит и «Все депозиты» **обязательно должны передавать одинаковый настоящий `transaction_id`** для одной транзакции. До FTD общие события сохраняются как ожидающие и не вызывают уведомлений, после получения FTD её транзакция учитывается один раз, остальные переходят в редепозиты. Если FTD не придёт, ожидающие события останутся без классификации и уведомлений. При разных ID транзакции корректное сопоставление невозможно. Отдельный маршрут `redeposit` предназначен только для доказанно повторных депозитов; вместе с «Все депозиты» лучше не настраивать оба маршрута на одно и то же событие без надёжного ID. Секрет не отправляйте в чат и не публикуйте в открытом доступе.
+
 **Повторный депозит**
 
 ```text
