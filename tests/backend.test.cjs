@@ -141,7 +141,7 @@ test('postback authentication and required transaction identity are enforced', a
 test('separate conversions mode edits one card per bot with the same visitor number', async () => {
   process.env.TELEGRAM_CONVERSIONS_SEPARATE = 'true'; process.env.TELEGRAM_BOT1_TOKEN = 'test-bot1'; process.env.TELEGRAM_BOT1_CHAT_ID = '84';
   await invoke(postback, pb()); await invoke(postback, pb({ type: 'first_deposit', transaction_id: 'tx-9', amount: '5' }));
-  assert.equal(calls.filter(c => c.method === 'sendMessage').length, 2);
+  assert.equal(calls.filter(c => c.method === 'sendMessage').length, 3);
   assert.equal(calls.filter(c => c.method === 'editMessageText').length, 2);
   assert.ok(calls.every(c => c.body.text.includes('#000001')));
 });
