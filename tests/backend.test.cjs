@@ -183,3 +183,34 @@ test('reviews, Telegram, rules, promo and GEO actions update the same visitor ca
   assert.match(calls.at(-1).body.text,/Смотрит правила игры/);
   assert.match(calls.at(-1).body.text,/Скопировал промокод/);
 });
+
+const allDeposits = require('../api/postback/1win/all-deposits');
+test('all-deposits classification waits for FTD and avoids duplicates', async () => {
+  process.env.TELEGRAM_CONVERSIONS_SEPARATE='true';
+  process.env.TELEGRAM_BOT1_TOKEN='test-bot1';process.env.TELEGRAM_BOT1_CHAT_ID='84';
+  const a=pb({ transaction_id:'tx-1',amount:'100' });
+  const b=pb({ transaction_id:'tx-2',amount:'200' });
+  assert.equal((await invoke(allDeposits,a)).body.pending,true);
+  assert.equal((await invoke(allDeposits,b)).body.pending,true);
+  assert.equal(calls.length,0);
+  assert.equal((await invoke(postback,pb({type:'first_deposit',transaction_id:'tx-1',amount:'100'}))).code,200);
+  assert.equal((await invoke(allDeposits,a)).body.duplicate,true);
+  assert.equal((await invoke(allDeposits,b)).body.duplicate,true);
+  const notices=calls.filter(c=>c.method==='sendMessage' && c.body.text.includes('ДЕПОЗИТ'));
+  assert.equal(notices.length,2);
+  assert.match(notices[0].body.text,/ПЕРВЫЙ ДЕПОЗИТ/);
+  assert.match(notices[1].body.text,/ПОВТОРНЫЙ ДЕПОЗИТ/);
+});
+test('FTD before all-deposits classifies first and repeats exactly once',async()=>{
+  await invoke(postback,pb({type:'first_deposit',transaction_id:'first'}));
+  assert.equal((await invoke(allDeposits,pb({transaction_id:'first'}))).body.duplicate,true);
+  assert.equal((await invoke(allDeposits,pb({transaction_id:'second'}))).body.classification,'redeposit');
+  assert.equal((await invoke(allDeposits,pb({transaction_id:'second'}))).body.duplicate,true);
+});
+test('all-deposits needs reliable transaction ID and rejects mismatched FTD',async()=>{
+  assert.equal((await invoke(allDeposits,pb({transaction_id:''}))).code,400);
+  assert.equal((await invoke(allDeposits,pb({transaction_id:'{transaction_id}'}))).code,400);
+  assert.equal((await invoke(postback,pb({type:'first_deposit',transaction_id:'abc'}))).code,200);
+  const conflicting=await invoke(postback,pb({type:'first_deposit',transaction_id:'def'}));
+  assert.equal(conflicting.code,409);
+});
