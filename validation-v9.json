@@ -1,0 +1,13 @@
+{
+  "version": 9,
+  "targeted_tests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "checks": [
+    "rules.js syntax",
+    "all rule panels in 42 locales"
+  ],
+  "browser_visual_qa": "Unavailable; not performed",
+  "deployed": false
+}

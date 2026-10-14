@@ -1,0 +1,16 @@
+{
+  "version": 10,
+  "targeted_tests": {
+    "passed": 8,
+    "failed": 0
+  },
+  "locales_verified": 42,
+  "checks": [
+    "rules.js syntax",
+    "Tower Rush additional locale keys",
+    "CSS delimiter balance",
+    "CSS asset references"
+  ],
+  "browser_visual_qa": "Unavailable; not performed",
+  "deployed": false
+}

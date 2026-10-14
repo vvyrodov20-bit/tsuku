@@ -1,0 +1,10 @@
+{
+  "version": 7,
+  "changes": "CSS palette and matching header controls; unchanged JavaScript behavior",
+  "checks": [
+    "CSS delimiter balance",
+    "CSS local asset references"
+  ],
+  "browser_visual_qa": "Unavailable; not performed",
+  "deployed": false
+}

@@ -1,0 +1,9 @@
+{
+  "version": 6,
+  "automated_tests": {"passed": 35, "failed": 0},
+  "locales": 42,
+  "geo_payment_profiles": 111,
+  "checks": ["HTML nesting", "unique HTML IDs", "local HTML and CSS asset paths", "JavaScript syntax", "all three rule panels in every locale", "numeric Tower Rush gallery navigation", "no decorative arrow glyphs in rendered panels", "backend tracking and postback regressions"],
+  "browser_visual_qa": "Unavailable in the current environment; not performed",
+  "deployed": false
+}

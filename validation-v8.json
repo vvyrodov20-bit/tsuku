@@ -1,0 +1,15 @@
+{
+  "version": 8,
+  "automated_tests": {
+    "passed": 35,
+    "failed": 0
+  },
+  "crypto_locales_verified": 42,
+  "checks": [
+    "four crypto instructions and three currency examples per locale",
+    "CSS delimiter balance",
+    "CSS local asset references"
+  ],
+  "browser_visual_qa": "Unavailable; not performed",
+  "deployed": false
+}
