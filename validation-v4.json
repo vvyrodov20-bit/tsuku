@@ -1,0 +1,24 @@
+{
+  "version": "4",
+  "unit_tests": {
+    "passed": 30,
+    "failed": 0
+  },
+  "locales": 42,
+  "browser_visual_qa": "Unavailable in the current environment; not performed",
+  "static_checks": [
+    "unique HTML IDs",
+    "local image/script/style paths",
+    "CSS reference and brace validation",
+    "JavaScript syntax"
+  ],
+  "sources": {
+    "tower": "Only page-rules from tower-rush-site-ready-v8.zip",
+    "ice": "User-provided text; mechanics cross-checked with Evolution"
+  },
+  "scene_sizes_bytes": {
+    "tower.webp": 149326,
+    "pickaxe.webp": 117954,
+    "ice.webp": 140352
+  }
+}

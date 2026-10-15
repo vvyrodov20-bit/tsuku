@@ -1,0 +1,32 @@
+/* v5: a calm game-world backdrop, contrasting mine artwork and bold actions. */
+body{background:#070d1b;isolation:isolate}
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#070d1b22,#070d1b55 60%,#070d1bcc),url('scenes/site-world.webp') center top/cover no-repeat}
+.header{background:#0b1128e8;backdrop-filter:blur(18px)}
+.intro{padding-top:32px;padding-bottom:24px}
+.game-card.pickaxe{--scene:url('scenes/pickaxe-amber.webp');background:#201722;border-color:#83ccbe66}
+.game-card.pickaxe::before{background-image:linear-gradient(90deg,#110e20a8,#14102026 48%,#0d101c48),var(--scene)}
+.game-card.pickaxe .game-art img{filter:drop-shadow(0 5px 2px #050817) drop-shadow(0 14px 16px #000b)}
+.game-category{width:max-content}.card-number{font-weight:800}
+.pickaxe-rules-hero{position:relative;isolation:isolate;overflow:hidden;border:1px solid #86755466;border-radius:23px;padding:32px;margin-bottom:27px;background:#1c1928}
+.pickaxe-rules-hero::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#141626ed 10%,#1d1928cb 58%,#211d2a55),url('scenes/pickaxe-amber.webp') center/cover}
+.pickaxe-rules-hero .badges{margin-top:0;flex-wrap:wrap}
+.pickaxe-rules-hero .hero-content-wrapper{margin-bottom:0;gap:24px}
+.pickaxe-rules-hero .hero-desc{color:#d1d9e9;line-height:1.85}
+.pickaxe-rules-hero .hero-image-box{min-width:0;flex:0 1 260px}
+.pickaxe-rules-hero .hero-image-box img{border-radius:18px;max-width:100%;height:auto}
+.tower-rules .rule-hero-art img{max-height:280px;filter:drop-shadow(0 12px 15px #0007)}
+button,.game-play,.bonus-cta,.btn-step-action,.btn-fat-claim,.btn-tg-header,.primary-button,.secondary-button,.guide-link{font-weight:900}
+.game-play bdi,.game-play span,.bonus-cta span,.btn-tg-header span,.nav-item,.rules-tabs button,.promo-copy,.pause-wins,.primary-button,.secondary-button,.btn-step-action,.btn-fat-claim{font-weight:900}
+.payment-country{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;margin:20px 0 14px;font-size:12px;color:#bccce8;font-weight:700}
+.payment-country select{width:min(100%,320px);min-width:0;max-width:100%;padding:12px 36px 12px 14px;border:1px solid #899ee063;border-radius:10px;background:#13213c;color:#eef4ff;font-family:inherit;font-size:13px;font-weight:700}
+.payment-country select:focus-visible{outline:2px solid #9bcfff;outline-offset:3px}
+.payment-region-note{font-size:12px;line-height:1.7;color:#afc1df;margin:17px 0 0;border-top:1px solid #6587b333;padding-top:14px}
+.geo-method-panel{padding:20px;background:linear-gradient(120deg,#202f4d,#13243d);border:1px solid #728dc642;border-radius:15px;margin-top:22px}
+.geo-method-panel .dep-method-chips{margin-bottom:0}
+#paymentSelection{display:flex;align-items:center;flex-wrap:wrap;gap:12px;font-size:13px;margin:16px 0}
+#paymentSelection[hidden]{display:none}
+#paymentMethod{max-width:100%;min-height:42px;font-weight:700}
+.chip-item strong{font-weight:800}
+.payment-method-summary{color:#c7e4ff!important;font-weight:750}
+@media(max-width:760px){body::before{background-position:center top;background-size:auto 100vh;opacity:.8}.pickaxe-rules-hero{padding:22px 18px;border-radius:17px}.pickaxe-rules-hero .hero-content-wrapper{gap:20px}.pickaxe-rules-hero .hero-image-box{flex:0 1 auto;max-width:240px}.payment-country{align-items:stretch;flex-direction:column;text-align:start}.payment-country select{width:100%;font-size:16px}.geo-method-panel{padding:17px}.intro{padding-top:26px}}
+@media(prefers-reduced-transparency:reduce){.header{background:#0b1128;backdrop-filter:none}}

@@ -1,0 +1,21 @@
+{
+  "version": 5,
+  "unit_tests": {
+    "passed": 33,
+    "failed": 0
+  },
+  "locales": 42,
+  "payment_geos": 111,
+  "payment_mode": "Regional reference; actual account cashier availability is not asserted",
+  "browser_visual_qa": "Unavailable in the current environment; not performed",
+  "static_checks": [
+    "HTML nesting",
+    "unique HTML IDs",
+    "local image/script/style and CSS references",
+    "JavaScript syntax"
+  ],
+  "scene_sizes_bytes": {
+    "pickaxe-amber.webp": 20536,
+    "site-world.webp": 74658
+  }
+}
