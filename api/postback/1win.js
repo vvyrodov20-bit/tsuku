@@ -1,10 +1,11 @@
 'use strict';
 const store = require('../../lib/store');
+const { randomUUID } = require('node:crypto');
 const { payload, sameSecret } = require('../../lib/http');
 const { clean } = require('../../lib/telegram-client');
 const { digest } = require('../../lib/visitors');
 const original = require('./1win-original');
-const TOWER_ENDPOINT = 'https://tower-rush-azure.vercel.app/api/postback/1win';
+const TOWER_ENDPOINT = 'https://tower-rush-azure.vercel.app/api/postback/relay';
 const TYPES = { registration:'registration',register:'registration',reg:'registration',first_deposit:'first_deposit','first-deposit':'first_deposit',ftd:'first_deposit',redeposit:'redeposit',repeat:'redeposit',all_deposits:'all_deposits','all-deposits':'all_deposits',deposit:'all_deposits' };
 const identify = v => /^tr_[A-Za-z0-9_-]{8,80}$/.test(v) ? 'tower' : /^fp_[A-Za-z0-9_-]{8,100}$/.test(v) ? 'game' : '';
 module.exports = async function handler(req,res) {
@@ -35,10 +36,11 @@ module.exports = async function handler(req,res) {
         if(!known && res.statusCode===200)await store.set(routeKey,{site});
         return result;
       }
-      const relaySecret=process.env.TOWER_RUSH_POSTBACK_RELAY_SECRET;
-      if(!relaySecret)return res.status(503).json({ok:false,error:'tower_relay_unconfigured'});
-      const {secret:_redacted,...safe}=body;
-      const response=await fetch(TOWER_ENDPOINT,{method:'POST',headers:{'content-type':'application/json','x-postback-secret':relaySecret},body:JSON.stringify({...safe,type}),signal:AbortSignal.timeout(15000)});
+      const {secret:_discard,...safe}=body;
+      const forwarded={...safe,type};
+      const nonce=randomUUID();
+      await store.command('SET','partner-relay:tower:'+nonce,digest(JSON.stringify(forwarded)),'EX',120);
+      const response=await fetch(TOWER_ENDPOINT,{method:'POST',headers:{'content-type':'application/json','x-postback-relay-nonce':nonce},body:JSON.stringify(forwarded),signal:AbortSignal.timeout(15000)});
       const data=await response.json();
       if(response.ok && !known)await store.set(routeKey,{site});
       return res.status(response.status).json(data);
