@@ -38,7 +38,7 @@ module.exports = async function handler(req,res) {
       const relaySecret=process.env.TOWER_RUSH_POSTBACK_RELAY_SECRET;
       if(!relaySecret)return res.status(503).json({ok:false,error:'tower_relay_unconfigured'});
       const {secret:_redacted,...safe}=body;
-      const response=await fetch(TOWER_ENDPOINT,{method:'POST',headers:{'content-type':'application/json','x-postback-relay-secret':relaySecret},body:JSON.stringify({...safe,type}),signal:AbortSignal.timeout(15000)});
+      const response=await fetch(TOWER_ENDPOINT,{method:'POST',headers:{'content-type':'application/json','x-postback-secret':relaySecret},body:JSON.stringify({...safe,type}),signal:AbortSignal.timeout(15000)});
       const data=await response.json();
       if(response.ok && !known)await store.set(routeKey,{site});
       return res.status(response.status).json(data);
