@@ -7,10 +7,6 @@
   },
   "rewrites": [
     {
-      "source": "/go/1win",
-      "destination": "/api/go/1win"
-    },
-    {
       "source": "/tt1",
       "destination": "/"
     },

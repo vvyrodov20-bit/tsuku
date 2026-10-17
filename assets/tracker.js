@@ -58,22 +58,15 @@
     if (queue.length > 60) queue.splice(1, queue.length - 60);
     persistQueue(); void flush();
   }
-  function affiliateURL(game, button) {
-    const params = new URLSearchParams({ visitor_id: visitor, click_id: id('fp_'), button: button || game || 'register' });
-    if (game) params.set('game', game);
-    for (const key of ['source', 'source_code', 'channel', 'creative', 'campaign', 'content', 'landing_page']) if (state[key]) params.set(key, state[key]);
-    if (context.language) params.set('language', context.language);
-    if (context.country) params.set('country', context.country);
-    return '/go/1win?' + params;
+  const GAME_AFFILIATE_URLS = Object.freeze({
+    "falling-pickaxe": "https://lkvq.cc/9d7ad6b0",
+    "ice-fishing": "https://lkuf.cc/339b76",
+    "tower-rush": "https://lkuf.cc/6561aa49"
+});
+  function affiliateURL(game) {
+    return GAME_AFFILIATE_URLS[Object.hasOwn(GAME_AFFILIATE_URLS, game) ? game : 'falling-pickaxe'];
   }
-  function externalURL(language) {
-    const url = new URL(location.href);
-    url.searchParams.set('visitor_id', visitor);
-    url.searchParams.set('lang', language);
-    for (const key of ['source', 'source_code', 'channel', 'creative', 'campaign', 'content']) if (state[key]) url.searchParams.set(key, state[key]);
-    url.searchParams.delete('tt_external'); url.searchParams.delete('fp_new_session');
-    return url.href;
-  }
+  function externalURL() { return affiliateURL(); }
   root.HubTracker = {
     track, affiliateURL, externalURL,
     start(value) { context = { ...context, ...value }; if (!started) { started = true; track('page_view'); } },

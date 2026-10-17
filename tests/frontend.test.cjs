@@ -91,26 +91,26 @@ test('all 42 locales fully translate new UI and both official game summaries wit
     if (locale!=='en') {assert.notEqual(data.tower[0],locales.en.tower[0],locale);assert.notEqual(data.ice[0],locales.en.ice[0],locale);}
   }
 });
-test('browser identity persists after reload; external transfer joins same identity with source and language', async () => {
+test('browser identity persists while copied affiliate links contain no identity or source parameters', async () => {
   const first = trackerSession(); first.tracker.start({ language: 'pt-BR', country: 'BR', app: 'TikTok' }); await settled();
-  const external = first.tracker.externalURL('pt-BR'); const originalId = first.tracker.getContext().visitor_id;
-  const destination = trackerSession({ url: external });
-  assert.equal(destination.tracker.getContext().visitor_id, originalId);
-  assert.equal(destination.tracker.getContext().source_code, 'tt1');
-  assert.equal(new URL(external).searchParams.get('lang'), 'pt-BR');
-  assert.equal(destination.sandbox.location.searchParams.has('visitor_id'), false);
+  assert.equal(first.tracker.externalURL('pt-BR'), 'https://lkvq.cc/9d7ad6b0');
   const reload = trackerSession({ local: first.local, url: 'https://games.test/' });
-  assert.equal(reload.tracker.getContext().visitor_id, originalId);
-  const separate = trackerSession(); assert.notEqual(separate.tracker.getContext().visitor_id, originalId);
+  assert.equal(reload.tracker.getContext().visitor_id, first.tracker.getContext().visitor_id);
+  assert.notEqual(trackerSession().tracker.getContext().visitor_id, first.tracker.getContext().visitor_id);
 });
-test('path source overrides old attribution without changing identity; different games get distinct click IDs', () => {
-  const first = trackerSession(); const original = first.tracker.getContext().visitor_id;
-  const next = trackerSession({ local: first.local, url: 'https://games.test/ig1?creative=ice_02&channel=reels' });
-  assert.equal(next.tracker.getContext().visitor_id, original);
-  const a = new URL(next.tracker.affiliateURL('ice-fishing'), 'https://games.test');
-  const b = new URL(next.tracker.affiliateURL('tower-rush'), 'https://games.test');
-  assert.equal(a.searchParams.get('source_code'), 'ig1'); assert.equal(a.searchParams.get('creative'), 'ice_02');
-  assert.notEqual(a.searchParams.get('click_id'), b.searchParams.get('click_id')); assert.equal(a.searchParams.get('game'), 'ice-fishing');
+test('each game keeps its exact direct URL across sources, countries and language changes', () => {
+  const expected = { 'falling-pickaxe': 'https://lkvq.cc/9d7ad6b0', 'ice-fishing': 'https://lkuf.cc/339b76', 'tower-rush': 'https://lkuf.cc/6561aa49' };
+  for (const source of ['tt1','tt2','ig1','fb1']) {
+    const current = trackerSession({ url: 'https://games.test/'+source+'?creative=ice_02&channel=reels&country=BR' });
+    for (const language of ['ru','en','es','pt-BR']) {
+      current.tracker.update({language,country:'BR'});
+      for (const [game,url] of Object.entries(expected)) assert.equal(current.tracker.affiliateURL(game,'play'),url);
+      assert.equal(current.tracker.affiliateURL(),expected['falling-pickaxe']);
+      assert.equal(current.tracker.externalURL(language),expected['falling-pickaxe']);
+    }
+  }
+  assert.equal(fs.existsSync(path.join(root,'api/go/1win.js')),false);
+  assert.ok(!JSON.parse(read('vercel.json')).rewrites.some(r=>r.source==='/go/1win'));
 });
 test('fetch, beacon and reload retries retain the same event ID', async () => {
   const first = trackerSession({ blocked: true }); first.tracker.start({ language: 'es' }); await settled();

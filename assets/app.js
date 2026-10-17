@@ -107,14 +107,11 @@
   });
   document.querySelectorAll('[data-page]').forEach(button => button.addEventListener('click', () => showPage(button.dataset.page)));
   document.querySelector('.brand').addEventListener('click', event => { event.preventDefault(); showPage('games'); });
-  // Each intentional activation gets a new click ID; a request retry retains its ID.
+  // Each game uses its fixed direct affiliate URL.
   document.addEventListener('click', event => {
     if (event.target.closest?.('[data-telegram]')) root.HubTracker.track('telegram_click');
     const link = event.target.closest?.('[data-game], [data-register]');
     if (!link) return;
-    if (location.protocol === 'file:') {
-      event.preventDefault(); alert('Local preview. Start with npm run dev, or deploy to Vercel to use /go/1win.'); return;
-    }
     link.href = root.HubTracker.affiliateURL(link.dataset.game || '', link.dataset.game || link.dataset.trackId || 'register');
     if (link.dataset.game) root.HubTracker.track('game_select', { game: link.dataset.game });
   });

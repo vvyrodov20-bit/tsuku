@@ -5,7 +5,6 @@ const store = require('../lib/store');
 const { record } = require('../lib/visitors');
 const { telegramConfig } = require('../lib/telegram-client');
 const track = require('../api/track');
-const redirect = require('../api/go/1win');
 const postback = require('../api/postback/1win');
 const registration = require('../api/postback/1win/registration');
 let db, calls, telegramMode, messageCount, redisDown;
@@ -99,16 +98,11 @@ test('track ignores forged message IDs/state, rejects conversion spoofing, and p
   result = await invoke(track, { visitor_id: visitor, event: 'registration', event_id: event(2) }); assert.equal(result.code, 400);
   result = await invoke(track, { visitor_id: visitor, event: 'page_view', event_id: event(1) }); assert.equal(result.body.duplicate, true);
 });
-test('game redirect carries sub1…sub10 and postbacks update the original card', async () => {
-  process.env.ONEWIN_ICE_FISHING_URL = 'https://affiliate.test/ice?partner=original';
+test('postbacks for legacy tracked clicks still update the original card', async () => {
+  const context = { visitor_id: visitor, game: 'ice-fishing', country: 'CL', language: 'es', attribution: { source_code: 'tt2', source: 'TikTok', channel: 'reels', creative: 'ice_01', campaign: 'october', content: 'fish' } };
   await record(visitor, 'page_view', { country: 'CL' }, event(1));
-  const args = { game: 'ice-fishing', click_id: click, visitor_id: visitor, source_code: 'tt2', source: 'TikTok', channel: 'reels', creative: 'ice_01', campaign: 'october', content: 'fish', language: 'es', country: 'CL' };
-  const request = { method: 'GET', url: '/go/1win?' + new URLSearchParams(args), headers: {} };
-  const go = await invoke(redirect, {}, request);
-  assert.equal(go.code, 302); const target = new URL(go.location);
-  assert.equal(target.host, 'affiliate.test'); assert.equal(target.searchParams.get('partner'), 'original');
-  assert.deepEqual(Array.from({ length: 10 }, (_, i) => target.searchParams.get('sub' + (i + 1))), [click, 'tt2', 'reels', 'ice_01', 'ice-fishing', 'ice-fishing', 'es', 'CL', 'october', 'fish']);
-  await invoke(redirect, {}, request); // network retry
+  await store.set('click:' + click, context);
+  await record(visitor, 'affiliate_click', context, 'click:' + click);
   const reg = await invoke(postback, pb()); assert.equal(reg.code, 200); assert.equal(reg.body.visitor_number, 1);
   const deposit = pb({ type: 'first_deposit', event_id: 'ftd-event', transaction_id: 'tx-1', amount: '100' });
   const first = await invoke(postback, deposit); const retry = await invoke(postback, deposit);
@@ -149,22 +143,9 @@ test('same bot credentials in both slots still produce one message', async () =>
   process.env.TELEGRAM_CONVERSIONS_SEPARATE = 'true'; process.env.TELEGRAM_BOT1_TOKEN = process.env.TELEGRAM_BOT2_TOKEN; process.env.TELEGRAM_BOT1_CHAT_ID = process.env.TELEGRAM_BOT2_CHAT_ID;
   await invoke(postback, pb()); assert.equal(calls.length, 1);
 });
-test('each game uses its assigned affiliate destination and retains click attribution', async () => {
-  process.env.ONEWIN_AFFILIATE_URL='https://lkvq.cc/838bfc6f';
-  for(const [game,url] of [['falling-pickaxe','https://lkvq.cc/838bfc6f'],['tower-rush','https://lkuf.cc/6561aa49'],['ice-fishing','https://lkuf.cc/339b76']]){
-    const result=await invoke(redirect,{}, {method:'GET',url:'/go/1win?game='+game+'&visitor_id='+visitor+'&language=ru',headers:{}});
-    assert.equal(result.code,302);
-    const target=new URL(result.location);
-    assert.equal(target.origin+target.pathname,url);
-    assert.match(target.searchParams.get('sub1'),/^fp_/);
-    assert.equal(target.searchParams.get('sub6'),game);
-    assert.equal(target.searchParams.get('sub7'),'ru');
-  }
-});
-test('no memory fallback on missing database; valid affiliate redirects still work during an outage', async () => {
+test('no memory fallback on missing database', async () => {
   delete process.env.UPSTASH_REDIS_REST_URL;
   const result = await invoke(track, { visitor_id: visitor, event: 'page_view', event_id: event(1) }); assert.equal(result.code, 503); assert.equal(calls.length, 0);
-  const go = await invoke(redirect, {}, { method: 'GET', url: '/go/1win?game=tower-rush', headers: {} }); assert.equal(go.code, 302);
 });
 test('Telegram HTML is escaped and the bounded history fits one message', async () => {
   await record(visitor, 'page_view', { attribution: { source: '<evil>&"', creative: '<tag>' } }, event(1));
