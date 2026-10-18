@@ -16,13 +16,13 @@ class Element {
   removeAttribute(k){delete this.attributes[k];}
   addEventListener(type,fn){this.listeners[type]=fn;}
 }
-function session(withApp=false){
+function session(withApp=false,userAgent=''){
   const nodes=Object.fromEntries([...read('index.html').matchAll(/id="([^"]+)"/g)].map(([,id])=>[id,new Element()]));
   const translated=Object.fromEntries(['depStep2Desc','depStep5Desc'].map(key=>{const e=new Element();e.dataset.i18n=key;return [key,e];}));
-  const brand=new Element(),nav=new Element(),memory=new Map();
+  const brand=new Element(),nav=new Element(),memory=new Map(),listeners={};
   const document={body:new Element(),documentElement:{},getElementById:id=>nodes[id],createElement:()=>new Element(),
     querySelector:selector=>selector==='.brand'?brand:selector==='.nav'?nav:translated[selector.match(/data-i18n="([^"]+)"/)?.[1]],
-    querySelectorAll:selector=>selector==='[data-i18n]'?Object.values(translated):selector==='.page'?Object.entries(nodes).filter(([id])=>id.startsWith('page-')).map(([id,node])=>{node.id=id;return node;}):[],addEventListener(){}
+    querySelectorAll:selector=>selector==='[data-i18n]'?Object.values(translated):selector==='.page'?Object.entries(nodes).filter(([id])=>id.startsWith('page-')).map(([id,node])=>{node.id=id;return node;}):[],addEventListener(type,fn){listeners[type]=fn;}
   };
   const sandbox={document,Intl,URL,URLSearchParams,console,Math,
     Option:function(label,value){this.textContent=label;this.value=value;},
@@ -30,11 +30,11 @@ function session(withApp=false){
     HubConfig:require('../assets/catalog'),HubBrowser:require('../assets/browser-utils'),
     HubTracker:{track(){},start(){},update(){},externalURL:()=>'',affiliateURL:()=>'/go/1win'},
     HubRules:{render(){}},HubActivity:{render(){}},HubActivityUtils:{currencyFor:code=>code==='BR'?'BRL':'USD'},
-    location:new URL('file:///example/index.html?country=BR&lang=ru#deposit'),history:{replaceState(){}},navigator:{language:'en',languages:['en'],userAgent:''},scrollTo(){},setTimeout(){},AbortSignal
+    location:new URL('file:///example/index.html?country=BR&lang=ru#deposit'),history:{replaceState(){}},navigator:{language:'en',languages:['en'],userAgent},scrollTo(){},setTimeout(){},AbortSignal
   };
   sandbox.window=sandbox;vm.createContext(sandbox);
   for(const file of ['locales','payments','payment-locales','hub-translations','upgrade-locales','legacy-content',...(withApp?['app']:[])])vm.runInContext(read('assets/'+file+'.js'),sandbox);
-  return {s:sandbox,nodes,translated,memory};
+  return {s:sandbox,nodes,translated,memory,listeners};
 }
 test('every GEO has local currency and valid payment references; vouchers never become withdrawal methods',()=>{
   const {s}=session();
@@ -88,4 +88,17 @@ test('deposit and activity country controls stay synchronized while language rem
   assert.equal(nodes.depositCountrySelect.value,'BR');assert.equal(nodes.paymentMethod.value,'pix');
   nodes.depositCountrySelect.listeners.change({target:{value:''}});
   assert.equal(nodes.countrySelect.value,'');assert.equal(nodes.paymentSelection.hidden,true);
+});
+
+test('social in-app browsers display the site and links navigate without waiting for tracking',()=>{
+  for(const ua of ['Instagram 400','[FBAN/FBIOS;FBAV/500]','TikTok/42']){
+    const {s,nodes,listeners}=session(true,ua);
+    assert.equal(nodes.siteApp.hidden,false);assert.equal(nodes.siteApp.inert,false);assert.equal(nodes.inAppGate.hidden,true);
+    s.HubApp.showPage('rules');assert.equal(s.HubApp.getState().page,'rules');
+    const url='https://lkuf.cc/339b76',link={dataset:{game:'ice-fishing'},textContent:'Play Ice Fishing',href:url};
+    let prevented=false;
+    s.HubTracker.affiliateURL=()=>url;s.HubTracker.track=()=>{throw new Error('Tracking unavailable');};
+    assert.throws(()=>listeners.click({target:{closest:selector=>selector==='[data-telegram]'?null:link},preventDefault(){prevented=true;}}));
+    assert.equal(prevented,false);assert.equal(link.href,url);
+  }
 });

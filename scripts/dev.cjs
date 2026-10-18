@@ -4,11 +4,13 @@ const path = require('node:path');
 const fs = require('node:fs');
 const root = path.resolve(__dirname, '..');
 const routes = {
-  '/api/track': '../api/track', '/api/geo': '../api/geo', '/go/1win': '../api/go/1win', '/api/go/1win': '../api/go/1win',
+  '/api/track': '../api/track', '/api/geo': '../api/geo',
   '/api/postback/1win': '../api/postback/1win', '/postback/partner': '../api/postback/1win',
   '/api/postback/1win/registration': '../api/postback/1win/registration',
   '/api/postback/1win/first-deposit': '../api/postback/1win/first-deposit',
   '/api/postback/1win/redeposit': '../api/postback/1win/redeposit',
+  '/api/postback/1win/all-deposits': '../api/postback/1win/all-deposits',
+  '/api/postback/1win/withdrawal': '../api/postback/1win/withdrawal',
 };
 const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.png': 'image/png', '.svg': 'image/svg+xml' };
 const server = http.createServer(async (req, res) => {

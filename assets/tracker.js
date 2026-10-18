@@ -10,13 +10,19 @@
   const visitor = validId(resume) ? resume : validId(prior.visitor_id) ? prior.visitor_id : validId(legacy.click_id) ? legacy.click_id : id('v_');
   const code = location.pathname.split('/').filter(Boolean)[0] || query.get('source_code') || '';
   const sourceName = root.HubConfig.sources[code];
-  const explicitSource = sourceName || query.get('source') || query.get('utm_source');
+  let referrerHost = '';
+  try { referrerHost = new URL(typeof document !== 'undefined' ? document.referrer : '').hostname; } catch (_) {}
+  const ua = navigator.userAgent || '';
+  const appSource = /Instagram/i.test(ua) ? 'Instagram' : /FBAN|FBAV|FB_IAB|FBIOS|FB4A/i.test(ua) ? 'Facebook' : /tiktok|musical_ly|musically|trill/i.test(ua) ? 'TikTok' : '';
+  const refSource = /(^|\.)facebook\.com$|(^|\.)fb\.com$/i.test(referrerHost) ? 'Facebook' : /(^|\.)instagram\.com$/i.test(referrerHost) ? 'Instagram' : /(^|\.)tiktok\.com$/i.test(referrerHost) ? 'TikTok' : /(^|\.)youtube\.com$|^youtu\.be$/i.test(referrerHost) ? 'YouTube' : referrerHost && referrerHost !== location.hostname ? referrerHost : '';
+  const explicitSource = sourceName || query.get('source') || query.get('utm_source') || appSource || refSource || (query.has('fbclid') ? 'Facebook' : query.has('ttclid') ? 'TikTok' : '');
   const clean = value => String(value || '').replace(/[\u0000-\u001f\u007f]/g, '').slice(0, 100);
   const state = { ...(validId(resume) && resume !== prior.visitor_id ? {} : prior), visitor_id: visitor };
   if (explicitSource) { state.source = clean(explicitSource); state.source_code = sourceName ? code : clean(query.get('source_code')); }
   for (const [name, alias] of [['channel','utm_medium'], ['creative','utm_content'], ['campaign','utm_campaign'], ['content','utm_content']]) {
     state[name] = clean(query.get(name) || query.get(alias) || (explicitSource ? '' : state[name]));
   }
+  state.referrer_host = referrerHost || state.referrer_host || '';
   state.source ||= 'Direct'; state.landing_page = location.pathname;
   write('localStorage', 'hub_context', state);
   // Consume a browser-transfer identity without leaving it in the shareable address bar.

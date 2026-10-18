@@ -61,7 +61,7 @@
     refreshLinks();
   }
   function showPage(value, shouldTrack = true) {
-    if (!['games', 'rules', 'deposit', 'reviews'].includes(value) || app) return;
+    if (!['games', 'rules', 'deposit', 'reviews'].includes(value)) return;
     page = value;
     document.querySelectorAll('.page').forEach(node => { node.hidden = node.id !== 'page-' + page; });
     document.querySelectorAll('.nav-item').forEach(node => {
@@ -113,11 +113,14 @@
     const link = event.target.closest?.('[data-game], [data-register]');
     if (!link) return;
     link.href = root.HubTracker.affiliateURL(link.dataset.game || '', link.dataset.game || link.dataset.trackId || 'register');
-    if (link.dataset.game) root.HubTracker.track('game_select', { game: link.dataset.game });
+    root.HubTracker.track('affiliate_click', { game: link.dataset.game || '', button_id: link.dataset.trackId || link.dataset.game || 'register', button_label: (link.textContent || '').trim().slice(0, 100) });
   });
   document.addEventListener('auxclick', event => {
     const link = event.target.closest?.('[data-game], [data-register]');
-    if (link) link.href = root.HubTracker.affiliateURL(link.dataset.game || '', link.dataset.game || link.dataset.trackId || 'register');
+    if (link && event.button === 1) {
+      link.href = root.HubTracker.affiliateURL(link.dataset.game || '', link.dataset.game || link.dataset.trackId || 'register');
+      root.HubTracker.track('affiliate_click', { game: link.dataset.game || '', button_id: link.dataset.trackId || link.dataset.game || 'register', button_label: (link.textContent || '').trim().slice(0, 100) });
+    }
   });
   $('openBrowser').addEventListener('click', () => {
     root.HubTracker.track('open_browser');
@@ -137,9 +140,9 @@
     if (copied) root.HubTracker.track('copy_link');
   });
   render();
-  document.body.classList.toggle('in-app', !!app);
-  $('siteApp').hidden = !!app; $('siteApp').inert = !!app;
-  $('inAppGate').hidden = !app; $('appBadge').textContent = app || '';
+  document.body.classList.remove('in-app');
+  $('siteApp').hidden = false; $('siteApp').inert = false;
+  $('inAppGate').hidden = true; $('appBadge').textContent = app || '';
   $('bootScreen').hidden = true;
   showPage(location.hash.slice(1), false);
   // No external GEO service and no blocking loader. Local HTML also works without an API.
