@@ -140,9 +140,10 @@
     if (copied) root.HubTracker.track('copy_link');
   });
   render();
-  document.body.classList.remove('in-app');
-  $('siteApp').hidden = false; $('siteApp').inert = false;
-  $('inAppGate').hidden = true; $('appBadge').textContent = app || '';
+  const showTikTokGate = app === 'TikTok';
+  document.body.classList.toggle('in-app', showTikTokGate);
+  $('siteApp').hidden = showTikTokGate; $('siteApp').inert = showTikTokGate;
+  $('inAppGate').hidden = !showTikTokGate; $('appBadge').textContent = app || '';
   $('bootScreen').hidden = true;
   showPage(location.hash.slice(1), false);
   // No external GEO service and no blocking loader. Local HTML also works without an API.
