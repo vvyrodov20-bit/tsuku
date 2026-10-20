@@ -65,7 +65,7 @@
     persistQueue(); void flush();
   }
   const GAME_AFFILIATE_URLS = Object.freeze({
-    "falling-pickaxe": "https://lkvq.cc/9d7ad6b0",
+    "falling-pickaxe": "https://lkzh.cc/ebac",
     "ice-fishing": "https://lkuf.cc/339b76",
     "tower-rush": "https://lkuf.cc/6561aa49"
 });
