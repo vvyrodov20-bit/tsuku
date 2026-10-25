@@ -93,7 +93,7 @@ test('all 42 locales fully translate new UI and both official game summaries wit
 });
 test('browser identity stays private while direct links carry the known source', async () => {
   const first = trackerSession(); first.tracker.start({ language: 'pt-BR', country: 'BR', app: 'TikTok' }); await settled();
-  assert.equal(first.tracker.externalURL('pt-BR'), 'https://lkzh.cc/ebac?sub2=tt1');
+  assert.equal(first.tracker.externalURL('pt-BR'), 'https://lkzh.cc/ebac');
   const reload = trackerSession({ local: first.local, url: 'https://games.test/' });
   assert.equal(reload.tracker.getContext().visitor_id, first.tracker.getContext().visitor_id);
   assert.notEqual(trackerSession().tracker.getContext().visitor_id, first.tracker.getContext().visitor_id);
@@ -104,9 +104,9 @@ test('each game keeps its exact direct URL across sources, countries and languag
     const current = trackerSession({ url: 'https://games.test/'+source+'?creative=ice_02&channel=reels&country=BR' });
     for (const language of ['ru','en','es','pt-BR']) {
       current.tracker.update({language,country:'BR'});
-      for (const [game,url] of Object.entries(expected)) assert.equal(current.tracker.affiliateURL(game,'play'),url+'?sub2='+source);
-      assert.equal(current.tracker.affiliateURL(),expected['falling-pickaxe']+'?sub2='+source);
-      assert.equal(current.tracker.externalURL(language),expected['falling-pickaxe']+'?sub2='+source);
+      for (const [game,url] of Object.entries(expected)) assert.equal(current.tracker.affiliateURL(game,'play'),url);
+      assert.equal(current.tracker.affiliateURL(),expected['falling-pickaxe']);
+      assert.equal(current.tracker.externalURL(language),expected['falling-pickaxe']);
     }
   }
   assert.equal(fs.existsSync(path.join(root,'api/go/1win.js')),false);

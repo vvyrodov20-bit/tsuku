@@ -71,7 +71,6 @@
 });
   function affiliateURL(game) {
     const url = new URL(GAME_AFFILIATE_URLS[Object.hasOwn(GAME_AFFILIATE_URLS, game) ? game : 'falling-pickaxe']);
-    if (Object.hasOwn(root.HubConfig.sources, state.source_code || '')) url.searchParams.set('sub2', state.source_code);
     return url.href;
   }
   function externalURL() { return affiliateURL(); }
