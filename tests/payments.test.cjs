@@ -90,10 +90,11 @@ test('deposit and activity country controls stay synchronized while language rem
   assert.equal(nodes.countrySelect.value,'');assert.equal(nodes.paymentSelection.hidden,true);
 });
 
-test('social in-app browsers display the site and links navigate without waiting for tracking',()=>{
+test('TikTok retains its gate while Facebook and Instagram links navigate without waiting for tracking',()=>{
   for(const ua of ['Instagram 400','[FBAN/FBIOS;FBAV/500]','TikTok/42']){
     const {s,nodes,listeners}=session(true,ua);
-    assert.equal(nodes.siteApp.hidden,false);assert.equal(nodes.siteApp.inert,false);assert.equal(nodes.inAppGate.hidden,true);
+    const gated=ua==='TikTok/42';
+    assert.equal(nodes.siteApp.hidden,gated);assert.equal(nodes.siteApp.inert,gated);assert.equal(nodes.inAppGate.hidden,!gated);
     s.HubApp.showPage('rules');assert.equal(s.HubApp.getState().page,'rules');
     const url='https://lkuf.cc/339b76',link={dataset:{game:'ice-fishing'},textContent:'Play Ice Fishing',href:url};
     let prevented=false;

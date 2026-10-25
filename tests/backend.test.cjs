@@ -185,3 +185,12 @@ test('test postbacks are labelled and isolated from real event dedupe', async ()
   await invoke(postback,pb({test:'1'}));await invoke(postback,pb());
   assert.equal(calls.length,2);assert.match(calls[0].body.text,/ТЕСТ/);assert.doesNotMatch(calls[1].body.text,/ТЕСТ/);
 });
+
+ test('partner source survives from registration to deposits without website visitor lookups',async()=>{
+  assert.equal((await invoke(registration,pb({sub2:'fb1',country:'BR'}))).code,200);
+  assert.equal((await invoke(postback,pb({type:'first_deposit',transaction_id:'source-fallback',amount:'20'}))).code,200);
+  assert.match(calls[0].body.text,/Источник: Matias Gonzales/);
+  assert.match(calls[1].body.text,/Источник: Matias Gonzales/);
+  assert.ok(calls.every(c=>c.url.includes('bottest-bot1')));
+  assert.equal([...db.keys()].some(key=>key.includes('site:visitor:')),false);
+ });

@@ -23,3 +23,34 @@
 Сайт и партнёрка используют разные семейства ключей (`site:*`, `partner:*`, `partner-test:*`) в существующем Redis. Учётных связей между ними нет. Общая недоступность Redis может временно затронуть оба обработчика, но прямые ссылки остаются доступны.
 
 `npm test` проверяет независимость ботов, прямые URL, ошибки доставки, дубли, авторизацию, встроенные браузеры и существующий интерфейс/переводы. Настройки и секреты production сохранены. Секреты нельзя помещать в клиентский JS или публичный репозиторий.
+
+
+## Обновление 26.10.2026 — полные названия источников
+
+Уведомление содержит тип события, ID игрока, страну с флагом, полное название источника и сумму.
+Источники взяты из assets/catalog.js: tt1 — TikTok · Brasil; tt2 — TikTok · Chile; ig1 — Instagram · falling.pickaxe1; fb1 — Matias Gonzales.
+Все три прямые партнёрские ссылки получают sub2=<код>. Базовые адреса игр сохранены.
+Для каждого постбэка 1win добавьте &sub2={sub2}. Существующий POSTBACK_SECRET проекта tsuku остаётся прежним.
+Не используйте неподдерживаемый макрос {currency}; без валюты сумма показывается без символа валюты.
+Известный источник сохраняется по user_id среди партнёрских записей для следующих депозитов. Посещения сайта для этого не используются.
+Проверено: 43 автоматических теста. Реальное событие 1win → Telegram и возврат sub2 партнёркой требуют отдельной проверки.
+
+### registration
+
+https://falling-pickaxe-1win.vercel.app/api/postback/1win/registration?secret=YOUR_SECRET&event_id={event_id}&date={date}&user_id={user_id}&country={country}&source_name={source_name}&sub2={sub2}
+
+### first-deposit
+
+https://falling-pickaxe-1win.vercel.app/api/postback/1win/first-deposit?secret=YOUR_SECRET&event_id={event_id}&date={date}&user_id={user_id}&country={country}&amount={amount}&source_name={source_name}&sub2={sub2}
+
+### redeposit
+
+https://falling-pickaxe-1win.vercel.app/api/postback/1win/redeposit?secret=YOUR_SECRET&event_id={event_id}&date={date}&user_id={user_id}&country={country}&amount={amount}&source_name={source_name}&sub2={sub2}
+
+### all-deposits
+
+https://falling-pickaxe-1win.vercel.app/api/postback/1win/all-deposits?secret=YOUR_SECRET&event_id={event_id}&date={date}&user_id={user_id}&country={country}&amount={amount}&source_name={source_name}&sub2={sub2}
+
+### withdrawal
+
+https://falling-pickaxe-1win.vercel.app/api/postback/1win/withdrawal?secret=YOUR_SECRET&event_id={event_id}&date={date}&user_id={user_id}&country={country}&amount={amount}&source_name={source_name}&sub2={sub2}

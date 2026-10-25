@@ -91,22 +91,22 @@ test('all 42 locales fully translate new UI and both official game summaries wit
     if (locale!=='en') {assert.notEqual(data.tower[0],locales.en.tower[0],locale);assert.notEqual(data.ice[0],locales.en.ice[0],locale);}
   }
 });
-test('browser identity persists while copied affiliate links contain no identity or source parameters', async () => {
+test('browser identity stays private while direct links carry the known source', async () => {
   const first = trackerSession(); first.tracker.start({ language: 'pt-BR', country: 'BR', app: 'TikTok' }); await settled();
-  assert.equal(first.tracker.externalURL('pt-BR'), 'https://lkvq.cc/9d7ad6b0');
+  assert.equal(first.tracker.externalURL('pt-BR'), 'https://lkzh.cc/ebac?sub2=tt1');
   const reload = trackerSession({ local: first.local, url: 'https://games.test/' });
   assert.equal(reload.tracker.getContext().visitor_id, first.tracker.getContext().visitor_id);
   assert.notEqual(trackerSession().tracker.getContext().visitor_id, first.tracker.getContext().visitor_id);
 });
 test('each game keeps its exact direct URL across sources, countries and language changes', () => {
-  const expected = { 'falling-pickaxe': 'https://lkvq.cc/9d7ad6b0', 'ice-fishing': 'https://lkuf.cc/339b76', 'tower-rush': 'https://lkuf.cc/6561aa49' };
+  const expected = { 'falling-pickaxe': 'https://lkzh.cc/ebac', 'ice-fishing': 'https://lkuf.cc/339b76', 'tower-rush': 'https://lkuf.cc/6561aa49' };
   for (const source of ['tt1','tt2','ig1','fb1']) {
     const current = trackerSession({ url: 'https://games.test/'+source+'?creative=ice_02&channel=reels&country=BR' });
     for (const language of ['ru','en','es','pt-BR']) {
       current.tracker.update({language,country:'BR'});
-      for (const [game,url] of Object.entries(expected)) assert.equal(current.tracker.affiliateURL(game,'play'),url);
-      assert.equal(current.tracker.affiliateURL(),expected['falling-pickaxe']);
-      assert.equal(current.tracker.externalURL(language),expected['falling-pickaxe']);
+      for (const [game,url] of Object.entries(expected)) assert.equal(current.tracker.affiliateURL(game,'play'),url+'?sub2='+source);
+      assert.equal(current.tracker.affiliateURL(),expected['falling-pickaxe']+'?sub2='+source);
+      assert.equal(current.tracker.externalURL(language),expected['falling-pickaxe']+'?sub2='+source);
     }
   }
   assert.equal(fs.existsSync(path.join(root,'api/go/1win.js')),false);
