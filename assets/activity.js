@@ -1,7 +1,7 @@
 /* Simulated activity only. Samples are local currency amounts, not FX conversions or real results. */
 (function(root){
   'use strict';
-  const games=root.HubConfig.games;
+  const games=root.HubConfig.games.filter(game=>!game.catalogOnly);
   const units={AED:5,ARS:1000,AUD:2,BDT:100,BOB:10,BRL:10,CAD:2,CDF:2000,CHF:2,CLP:1000,COP:5000,CRC:500,CZK:25,DOP:100,DZD:100,EGP:50,EUR:2,GBP:2,GHS:10,HKD:10,HNL:25,HTG:100,HUF:500,IDR:10000,ILS:5,INR:100,IQD:1000,JOD:1,JPY:100,KES:100,KHR:5000,KZT:500,LAK:20000,LBP:100000,LKR:500,LRD:200,LSL:20,LYD:5,MAD:10,MDL:20,MNT:5000,MRU:50,MVR:20,MWK:2000,MXN:20,MYR:5,MZN:100,NAD:20,NGN:1000,NPR:100,NZD:2,PAB:2,PEN:5,PHP:50,PKR:200,PLN:5,PYG:10000,QAR:5,RON:5,RUB:100,SAR:5,SEK:20,SGD:2,SYP:10000,SZL:20,THB:50,TJS:10,TRY:50,TTD:10,TWD:50,TZS:2000,UAH:50,USD:2,UZS:10000,VES:100,VND:20000,XAF:1000,XOF:1000,XPF:200,YER:200,ZAR:20,ZMW:20,ZWG:20};
   const names=['Nova','Pixel','Arctic','Sky','Neo','Alex','Luna','Rio','Leo','Max','Jade','Atlas','Kai','Storm','Echo','Ace'];
   const colors=['#9477c5','#559b9c','#ac8466','#5683b8','#96709a','#6b9c82'];

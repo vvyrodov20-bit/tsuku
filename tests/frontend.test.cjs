@@ -63,7 +63,7 @@ test('Android intent keeps attribution, has no in-app bypass and rejects unsuppo
 });
 test('home keeps vertical games, bonus before activity, original tabs and Telegram channel', () => {
   const html = read('index.html');
-  assert.equal([...html.matchAll(/class="game-card /g)].length, 3);
+  assert.equal([...html.matchAll(/class="game-card /g)].length, 4);
   for (const game of config.games) {
     assert.ok(html.includes(`data-game="${game.id}"`)); assert.ok(fs.existsSync(path.join(root, game.image)));
   }
@@ -99,10 +99,11 @@ test('browser identity stays private while direct links carry the known source',
   assert.notEqual(trackerSession().tracker.getContext().visitor_id, first.tracker.getContext().visitor_id);
 });
 test('each game keeps its exact direct URL across sources, countries and language changes', () => {
-  const expected = { 'falling-pickaxe': 'https://lkzh.cc/ebac', 'ice-fishing': 'https://lkuf.cc/339b76', 'tower-rush': 'https://lkuf.cc/6561aa49' };
+  const expected = { 'falling-pickaxe': 'https://lkzh.cc/ebac', 'ice-fishing': 'https://lkuf.cc/339b76', 'tower-rush': 'https://lkuf.cc/6561aa49', 'cash-farming': 'https://lkcq.cc/dd88' };
+  const locales = {window:{}}; vm.createContext(locales); vm.runInContext(read('assets/locales.js'),locales);
   for (const source of ['tt1','tt2','ig1','fb1']) {
     const current = trackerSession({ url: 'https://games.test/'+source+'?creative=ice_02&channel=reels&country=BR' });
-    for (const language of ['ru','en','es','pt-BR']) {
+    for (const language of Object.keys(locales.window.HubMeta)) {
       current.tracker.update({language,country:'BR'});
       for (const [game,url] of Object.entries(expected)) assert.equal(current.tracker.affiliateURL(game,'play'),url);
       assert.equal(current.tracker.affiliateURL(),expected['falling-pickaxe']);

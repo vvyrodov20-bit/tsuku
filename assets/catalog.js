@@ -5,6 +5,7 @@
     { id: 'falling-pickaxe', name: 'FALLING PICKAXE', image: 'assets/falling-pickaxe-cutout.png', number: '01' },
     { id: 'ice-fishing', name: 'ICE FISHING', image: 'assets/ice-fishing.png', number: '02' },
     { id: 'tower-rush', name: 'TOWER RUSH', image: 'assets/tower-rush-cutout.png', number: '03' },
+    { id: 'cash-farming', name: 'CASH FARMING', image: 'assets/cash-farming.png', number: '04', catalogOnly: true },
   ];
   const sources = {
     tt1: 'TikTok · Brasil', tt2: 'TikTok · Chile',

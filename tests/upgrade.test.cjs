@@ -18,8 +18,9 @@ class Element {
 function session(){
   const nodes=Object.fromEntries(['winsRows','pauseWins','onlineCount','siteApp','page-games','rulesTabs','rules-ice-fishing','rules-tower-rush','rules-falling-pickaxe'].map(id=>[id,new Element()]));
   nodes.pauseWins.children=[new Element(),new Element()];
-  const buttons=config.games.map(game=>{const node=new Element();node.dataset.rule=game.id;return node;});
-  const panels=config.games.map(game=>{const node=nodes['rules-'+game.id];node.id='rules-'+game.id;return node;});
+  const guideGames=config.games.filter(game=>!game.catalogOnly);
+  const buttons=guideGames.map(game=>{const node=new Element();node.dataset.rule=game.id;return node;});
+  const panels=guideGames.map(game=>{const node=nodes['rules-'+game.id];node.id='rules-'+game.id;return node;});
   const intervals=[],events=[],memory=new Map();
   const document={hidden:false,documentElement:{dir:'ltr'},createElement:()=>new Element(),getElementById:id=>nodes[id],querySelectorAll:selector=>selector==='[data-rule]'?buttons:selector==='.rule-panel'?panels:[]};
   const sandbox={document,Intl,Math,URL,HubConfig:config,HubTracker:{track:(...args)=>events.push(args)},localStorage:{getItem:key=>memory.get(key),setItem:(key,value)=>memory.set(key,value)},setInterval:handler=>{intervals.push(handler);},addEventListener(){}};
@@ -148,7 +149,7 @@ test('visible navigation removes decorative arrows and home slogans while numeri
   const {sandbox:s,nodes}=session();
   for(const language of Object.keys(s.HubMeta)){
     s.HubRules.render(language);
-    for(const game of config.games)assert.doesNotMatch(nodes['rules-'+game.id].innerHTML,/[\u2190-\u21ff‹›▶⌄]/u);
+    for(const game of config.games.filter(game=>!game.catalogOnly))assert.doesNotMatch(nodes['rules-'+game.id].innerHTML,/[\u2190-\u21ff‹›▶⌄]/u);
   }
   assert.equal((nodes['rules-tower-rush'].innerHTML.match(/data-gallery-index=/g)||[]).length,5);
   nodes['rules-tower-rush'].listeners.click({target:{closest:()=>({dataset:{galleryIndex:'4'}})}});

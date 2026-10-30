@@ -130,6 +130,53 @@ add('zh-TW','迎新優惠|讓起步更精彩|存款紅利|次免費旋轉|查看
 add('zh-HK','迎新優惠|為起步增添精彩|存款獎賞|次免費旋轉|查看優惠|優惠及條款因應國家及帳戶而異。存款前請先閱讀條款。|優惠碼|複製|已複製|選擇遊戲|了解各款遊戲的規則及玩法。|遊戲玩法|遊戲機制|遊戲官方資料|確切限額及派彩以遊戲內的規則為準。|供應商|類別|即時遊戲|真人遊戲節目|最近獎金|玩家|投注|倍數|獎金|遊戲|此為示範動態，並非真實玩家的結果。|暫停|繼續|國家 / 貨幣|自動|開始遊戲|轉輪',
 ['逐層建造高塔。成功放置樓層會提高累積倍數；高塔倒塌便會結束該回合。','選擇投注金額並開始回合。','放置每個樓層以提高總倍數。','在倒塌前兌現。派彩金額等於投注額乘以累積倍數。','可能出現三種獎賞樓層：Frozen Floor、Temple Floor 及 Triple Build。','FreeBet 及 FreeAmount 是推廣功能，條款由營運商制定。'],
 ['真人遊戲節目，設有 53 個區塊的轉輪及三種釣魚獎賞回合。','投注 Leaf 1、Leaf 2 或魚類獎賞。All Bonuses 涵蓋全部三種獎賞。','投注截止後，隨機區塊可能獲得最高 ×10 的倍數。','轉輪決定結果。只有投注相應獎賞，才可獲得該獎賞的派彩。','以下是轉輪加成前的魚類倍數範圍。指定的轉輪倍數會提高該獎賞內所有魚的數值。']);
+// Full labels keep the game name in the correct position for every language.
+const cashFarmingLabels={
+  en:'PLAY CASH FARMING',
+  ru:'ИГРАТЬ В CASH FARMING',
+  'pt-BR':'JOGAR CASH FARMING',
+  es:'JUGAR A CASH FARMING',
+  ar:'العب CASH FARMING',
+  ur:'CASH FARMING کھیلیں',
+  fr:'JOUER À CASH FARMING',
+  de:'CASH FARMING SPIELEN',
+  it:'GIOCA A CASH FARMING',
+  pt:'JOGAR CASH FARMING',
+  nl:'CASH FARMING SPELEN',
+  fi:'PELAA CASH FARMING',
+  sv:'SPELA CASH FARMING',
+  pl:'GRAJ W CASH FARMING',
+  cs:'HRÁT CASH FARMING',
+  hu:'CASH FARMING INDÍTÁSA',
+  tr:'CASH FARMING OYNA',
+  ro:'JOACĂ CASH FARMING',
+  bg:'ИГРАЙ CASH FARMING',
+  el:'ΠΑΙΞΕ CASH FARMING',
+  lt:'ŽAISTI CASH FARMING',
+  lv:'SPĒLĒT CASH FARMING',
+  uk:'ГРАТИ В CASH FARMING',
+  kk:'CASH FARMING ОЙНАУ',
+  uz:'CASH FARMING O‘YNASH',
+  tg:'CASH FARMING БОЗӢ КУНЕД',
+  he:'שחקו ב־CASH FARMING',
+  hi:'CASH FARMING खेलें',
+  bn:'CASH FARMING খেলুন',
+  ne:'CASH FARMING खेल्नुहोस्',
+  id:'MAIN CASH FARMING',
+  fil:'MAGLARO NG CASH FARMING',
+  ms:'MAIN CASH FARMING',
+  vi:'CHƠI CASH FARMING',
+  th:'เล่น CASH FARMING',
+  km:'លេង CASH FARMING',
+  lo:'ຫຼິ້ນ CASH FARMING',
+  si:'CASH FARMING ක්‍රීඩා කරන්න',
+  mn:'CASH FARMING ТОГЛОХ',
+  ja:'CASH FARMINGをプレイ',
+  'zh-TW':'玩 CASH FARMING',
+  'zh-HK':'玩 CASH FARMING'
+};
+keys.push('cashFarmingPlay');
+for(const [id,locale] of Object.entries(locales))locale.ui.cashFarmingPlay=cashFarmingLabels[id];
 root.HubUpgradeLocales=Object.freeze(locales);
 root.HubUpgradeKeys=Object.freeze(keys);
 })(typeof window!=='undefined'?window:globalThis);

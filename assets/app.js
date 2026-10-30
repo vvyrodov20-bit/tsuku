@@ -53,7 +53,7 @@
     root.HubActivity.render({ language, country });
     renderCountry();
     $('copyPromo').title = u('copy') + ': PROMOKODE2026';
-    document.title = 'Game Select — Falling Pickaxe, Ice Fishing, Tower Rush';
+    document.title = 'Game Select — Falling Pickaxe, Ice Fishing, Tower Rush, Cash Farming';
     $('metaDescription').content = games.map(g => g.name).join(', ') + ' — GAME SELECT.';
     $('platformHelp').textContent = t(platform() === 'ios' ? 'ttIOSInstruction' : 'ttAndroidInstruction');
     $('externalLink').setAttribute('aria-label', t('ttMenuCopy'));

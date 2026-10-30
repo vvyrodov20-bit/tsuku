@@ -67,7 +67,8 @@
   const GAME_AFFILIATE_URLS = Object.freeze({
     "falling-pickaxe": "https://lkzh.cc/ebac",
     "ice-fishing": "https://lkuf.cc/339b76",
-    "tower-rush": "https://lkuf.cc/6561aa49"
+    "tower-rush": "https://lkuf.cc/6561aa49",
+    "cash-farming": "https://lkcq.cc/dd88"
 });
   function affiliateURL(game) {
     const url = new URL(GAME_AFFILIATE_URLS[Object.hasOwn(GAME_AFFILIATE_URLS, game) ? game : 'falling-pickaxe']);
