@@ -15,8 +15,10 @@
   <link rel="stylesheet" href="assets/polish.css">
   <link rel="stylesheet" href="assets/palette.css">
   <link rel="stylesheet" href="assets/cash-farming.css">
+  <link rel="stylesheet" href="assets/tiktok-gate.css">
   <script src="assets/catalog.js" defer></script>
   <script src="assets/locales.js" defer></script>
+  <script src="assets/gate-locales.js" defer></script>
   <script src="assets/payments.js" defer></script>
   <script src="assets/payment-locales.js" defer></script>
   <script src="assets/hub-translations.js" defer></script>
@@ -138,15 +140,21 @@
     </main>
     <footer class="footer container"><p class="disclaimer" data-i18n="disclaimer">18+ ONLY.</p><p>© 2026 GAME SELECT | 1WIN. <span data-i18n="rights">ALL RIGHTS RESERVED.</span></p></footer>
   </div>
-  <section id="inAppGate" class="gate" hidden aria-labelledby="gateTitle">
-    <div class="gate-top"><span id="appBadge" class="app-badge">TikTok</span></div>
-    <div class="gate-symbol" aria-hidden="true">◎</div>
-    <h1 id="gateTitle" data-i18n="ttTopCardTitle">Open in your browser</h1><p class="gate-sub" data-i18n="ttTopCardSub">This page is open inside TikTok. Use an external browser to continue.</p>
-    <div class="gate-instructions"><span class="menu-dots" aria-hidden="true">•••</span><p id="platformHelp"></p></div>
-    <button type="button" id="openBrowser" class="primary-button"><span data-i18n="ttMenuOpen">Open in browser</span></button>
-    <button type="button" id="copyLink" class="secondary-button"><span data-i18n="ttMenuCopy">Copy link</span><span aria-hidden="true">⧉</span></button>
+  <section id="inAppGate" class="gate tiktok-gate" hidden aria-labelledby="gateTitle">
+    <svg class="gate-menu-arrow" viewBox="0 0 90 270" aria-hidden="true" focusable="false"><path d="M12 256C74 203 77 112 65 20"/><path class="gate-arrow-head" d="M43 40L63 6L84 38L66 31Z"/></svg>
+    <div class="gate-visual" aria-hidden="true">
+      <div class="gate-app-icon"><span class="gate-note">♪</span><span id="appBadge" class="app-badge">TikTok</span></div>
+      <svg class="gate-transfer" viewBox="0 0 24 24" focusable="false"><path d="M3 12h18m-6-6 6 6-6 6"/></svg>
+      <svg class="gate-browser-icon" viewBox="0 0 64 64" focusable="false"><rect x="5" y="7" width="54" height="50" rx="8"/><path d="M5 21h54M24 44l19-19M31 25h12v12"/><circle cx="14" cy="14" r="1"/><circle cx="21" cy="14" r="1"/><circle cx="28" cy="14" r="1"/></svg>
+    </div>
+    <h1 id="gateTitle" data-i18n="gateTitle">Open Game Select in your browser</h1>
+    <ol class="gate-steps">
+      <li><span class="gate-step-number" aria-hidden="true">1</span><div><strong data-i18n="gateStepMenu">Tap the three dots</strong><p data-i18n="gateMenuPosition">In the top-right corner of TikTok</p></div></li>
+      <li><span class="gate-step-number" aria-hidden="true">2</span><div><strong data-i18n="gateStepBrowser">Select “Open in browser”</strong></div></li>
+    </ol>
+    <button type="button" id="copyLink" class="secondary-button"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="8" y="3" width="12" height="14" rx="2"/><path d="M15 21H6a2 2 0 0 1-2-2V8"/></svg><span data-i18n="ttMenuCopy">Copy link</span></button>
     <p id="gateStatus" role="status" aria-live="polite"></p><input type="text" id="externalLink" readonly hidden aria-label="Copy link">
-    <div class="gate-games" aria-label="Falling Pickaxe, Ice Fishing, Tower Rush"><img src="assets/falling-pickaxe.png" alt=""><img src="assets/ice-fishing.png" alt=""><img src="assets/tower-rush.png" alt=""></div>
+    <p class="gate-footer" dir="ltr">GAME SELECT · 18+</p>
   </section>
   <noscript><div class="no-script">JavaScript is required to select a language. <a href="https://lkvq.cc/9d7ad6b0">Falling Pickaxe</a> · <a href="https://lkuf.cc/339b76">Ice Fishing</a> · <a href="https://lkuf.cc/6561aa49">Tower Rush</a> · <a href="https://lkcq.cc/dd88">Cash Farming</a></div><style>.boot{display:none}</style></noscript>
 </body>

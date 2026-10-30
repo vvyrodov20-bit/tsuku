@@ -27,7 +27,7 @@ function trackerSession({ url = 'https://games.test/tt1', local = storage(), ses
 const settled = () => new Promise(resolve => setImmediate(resolve));
 test('all 42 original locales have complete catalog, account and browser-gate translations', () => {
   const sandbox = { window: {} }; vm.createContext(sandbox);
-  vm.runInContext(read('assets/locales.js'), sandbox); vm.runInContext(read('assets/payment-locales.js'), sandbox); vm.runInContext(read('assets/hub-translations.js'), sandbox);
+  vm.runInContext(read('assets/locales.js'), sandbox); vm.runInContext(read('assets/gate-locales.js'), sandbox); vm.runInContext(read('assets/payment-locales.js'), sandbox); vm.runInContext(read('assets/hub-translations.js'), sandbox);
   const { HubMeta: meta, HubLocales: locales, HubCopy: copy } = sandbox.window;
   assert.equal(Object.keys(meta).length, 42);
   const html = read('index.html'), keys = [...html.matchAll(/data-i18n="([^"]+)"/g)].map(m => m[1]);

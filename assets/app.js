@@ -55,7 +55,6 @@
     $('copyPromo').title = u('copy') + ': PROMOKODE2026';
     document.title = 'Game Select — Falling Pickaxe, Ice Fishing, Tower Rush, Cash Farming';
     $('metaDescription').content = games.map(g => g.name).join(', ') + ' — GAME SELECT.';
-    $('platformHelp').textContent = t(platform() === 'ios' ? 'ttIOSInstruction' : 'ttAndroidInstruction');
     $('externalLink').setAttribute('aria-label', t('ttMenuCopy'));
     root.HubTracker.update({ language, country, app: app || '' });
     refreshLinks();
@@ -120,13 +119,6 @@
     if (link && event.button === 1) {
       link.href = root.HubTracker.affiliateURL(link.dataset.game || '', link.dataset.game || link.dataset.trackId || 'register');
       root.HubTracker.track('affiliate_click', { game: link.dataset.game || '', button_id: link.dataset.trackId || link.dataset.game || 'register', button_label: (link.textContent || '').trim().slice(0, 100) });
-    }
-  });
-  $('openBrowser').addEventListener('click', () => {
-    root.HubTracker.track('open_browser');
-    $('gateStatus').textContent = t(platform() === 'ios' ? 'ttIOSInstruction' : 'ttAndroidInstruction');
-    if (platform() === 'android') {
-      const intent = androidIntent(root.HubTracker.externalURL(language)); if (intent) location.href = intent;
     }
   });
   $('copyLink').addEventListener('click', async () => {
