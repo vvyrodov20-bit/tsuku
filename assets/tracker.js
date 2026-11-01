@@ -13,8 +13,8 @@
   let referrerHost = '';
   try { referrerHost = new URL(typeof document !== 'undefined' ? document.referrer : '').hostname; } catch (_) {}
   const ua = navigator.userAgent || '';
-  const appSource = /Instagram/i.test(ua) ? 'Instagram' : /FBAN|FBAV|FB_IAB|FBIOS|FB4A/i.test(ua) ? 'Facebook' : /tiktok|musical_ly|musically|trill/i.test(ua) ? 'TikTok' : '';
-  const refSource = /(^|\.)facebook\.com$|(^|\.)fb\.com$/i.test(referrerHost) ? 'Facebook' : /(^|\.)instagram\.com$/i.test(referrerHost) ? 'Instagram' : /(^|\.)tiktok\.com$/i.test(referrerHost) ? 'TikTok' : /(^|\.)youtube\.com$|^youtu\.be$/i.test(referrerHost) ? 'YouTube' : referrerHost && referrerHost !== location.hostname ? referrerHost : '';
+  const appSource = /(?:YouTube\/|com\.google\.ios\.youtube|youtube\.mobile)/i.test(ua) ? 'YouTube' : /Instagram/i.test(ua) ? 'Instagram' : /FBAN|FBAV|FB_IAB|FBIOS|FB4A/i.test(ua) ? 'Facebook' : /tiktok|musical_ly|musically|trill/i.test(ua) ? 'TikTok' : '';
+  const refSource = /(^|\.)facebook\.com$|(^|\.)fb\.com$/i.test(referrerHost) ? 'Facebook' : /(^|\.)instagram\.com$/i.test(referrerHost) ? 'Instagram' : /(^|\.)tiktok\.com$/i.test(referrerHost) ? 'TikTok' : /(^|\.)youtube\.com$|^youtu\.be$/i.test(referrerHost) ? 'YouTube' : /(^|\.)x\.com$|(^|\.)twitter\.com$/i.test(referrerHost) ? 'X / Twitter' : referrerHost && referrerHost !== location.hostname ? referrerHost : '';
   const explicitSource = sourceName || query.get('source') || query.get('utm_source') || appSource || refSource || (query.has('fbclid') ? 'Facebook' : query.has('ttclid') ? 'TikTok' : '');
   const clean = value => String(value || '').replace(/[\u0000-\u001f\u007f]/g, '').slice(0, 100);
   const state = { ...(validId(resume) && resume !== prior.visitor_id ? {} : prior), visitor_id: visitor };
