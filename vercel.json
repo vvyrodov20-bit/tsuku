@@ -23,6 +23,50 @@
       "destination": "/"
     },
     {
+      "source": "/ig2",
+      "destination": "/"
+    },
+    {
+      "source": "/ctg1",
+      "destination": "/"
+    },
+    {
+      "source": "/CTG1",
+      "destination": "/"
+    },
+    {
+      "source": "/ctg2",
+      "destination": "/"
+    },
+    {
+      "source": "/CTG2",
+      "destination": "/"
+    },
+    {
+      "source": "/ctg3",
+      "destination": "/"
+    },
+    {
+      "source": "/CTG3",
+      "destination": "/"
+    },
+    {
+      "source": "/ctg4",
+      "destination": "/"
+    },
+    {
+      "source": "/CTG4",
+      "destination": "/"
+    },
+    {
+      "source": "/ctg5",
+      "destination": "/"
+    },
+    {
+      "source": "/CTG5",
+      "destination": "/"
+    },
+    {
       "source": "/postback/partner",
       "destination": "/api/postback/1win"
     }
