@@ -1,0 +1,17 @@
+/* Standalone adult-confirmation screen; site actions are inaccessible until acceptance. */
+body.age-gated .header { display:none; }
+.age-gate[hidden] { display:none!important; }
+.age-gate { min-height:100vh; min-height:100dvh; padding: max(28px,env(safe-area-inset-top)) 16px max(28px,env(safe-area-inset-bottom)); display:grid; place-items:center; background:radial-gradient(ellipse at 50% 0%,#15365d 0%,#081629 62%,#070f1b 100%); color:#f8fbff; }
+.age-gate-card { width:min(100%,440px); text-align:center; border:1px solid #365576; border-radius:24px; background:linear-gradient(160deg,#142b47,#0a192a); padding:clamp(24px,6vw,42px); box-shadow:0 20px 60px #0005; }
+.age-gate-icon { margin:0 auto 22px; display:grid; place-items:center; width:88px; height:88px; border:2px solid #6aabf3; border-radius:50%; color:white; font-weight:900; font-size:34px; background:linear-gradient(145deg,#227bd8,#164582); }
+.age-gate-kicker { letter-spacing:1.5px; font-size:12px; font-weight:800; color:#a3d2ff; margin:0 0 12px; }
+.age-gate h1 { font-size:clamp(27px,6vw,36px); line-height:1.2; margin:0 0 16px; color:white; font-weight:800; }
+.age-gate-card > p:not(.age-gate-kicker) { color:#b8cce5; line-height:1.6; margin:0 0 22px; font-size:15px; }
+.age-gate-actions { display:grid; gap:12px; }
+.age-gate button { width:100%; min-height:54px; border-radius:12px; font-size:16px; font-weight:750; cursor:pointer; }
+.age-gate .age-confirm { color:white; border:1px solid #62b0ff; background:linear-gradient(#2694f2,#115cb1); }
+.age-gate .age-decline { color:#e5efff; border:1px solid #496788; background:#14253a; }
+.age-gate button:focus-visible { outline:3px solid white; outline-offset:4px; }
+.age-gate .age-denied { margin:20px 0 0!important; color:#fff!important; }
+.age-gate [hidden] { display:none!important; }
+@media(prefers-reduced-motion:reduce){.age-gate button{transition:none}}
