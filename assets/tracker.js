@@ -8,7 +8,7 @@
   const legacy = read('localStorage', 'fp_tracking_context', {});
   const resume = query.get('visitor_id') || query.get('fp_click_id');
   const visitor = validId(resume) ? resume : validId(prior.visitor_id) ? prior.visitor_id : validId(legacy.click_id) ? legacy.click_id : id('v_');
-  const code = location.pathname.split('/').filter(Boolean)[0] || query.get('source_code') || '';
+  const code = (location.pathname.split('/').filter(Boolean)[0] || query.get('source_code') || '').toLowerCase();
   const sourceName = root.HubConfig.sources[code];
   let referrerHost = '';
   try { referrerHost = new URL(typeof document !== 'undefined' ? document.referrer : '').hostname; } catch (_) {}
