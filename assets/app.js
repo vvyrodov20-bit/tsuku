@@ -15,6 +15,8 @@
   if (!manualCountry) { try { manualCountry = validCountry(localStorage.getItem('hub_country')); } catch (_) {} }
   let detectedCountry = '', country = manualCountry, language = explicit || saved || geo[country]?.locale || browser || 'en', page = 'games';
   const app = detectApp();
+  const agePlatform = root.HubAgeGate.sourcePlatform({ pathname: location.pathname, search: location.search, app, userAgent: navigator.userAgent, referrer: document.referrer });
+  let ageConfirmed = !agePlatform;
   const t = key => String(root.HubLocales[language]?.[key] || root.HubLocales.en[key] || key).replaceAll('{app}', app || '');
   const c = key => (root.HubCopy[language] || root.HubCopy.en)[copyKeys.indexOf(key)];
   const u = key => root.HubUpgradeLocales[language].ui[key];
@@ -40,6 +42,7 @@
     document.documentElement.lang = language;
     document.documentElement.dir = meta[language].direction;
     $('langSelect').value = language;
+    if (agePlatform && !ageConfirmed) renderAgeGate();
     $('langSelect').setAttribute('aria-label', t('languageLabel'));
     document.querySelector('.nav').setAttribute('aria-label', c('games'));
     document.querySelectorAll('[data-copy]').forEach(node => { node.textContent = c(node.dataset.copy); });
@@ -59,6 +62,24 @@
     root.HubTracker.update({ language, country, app: app || '' });
     refreshLinks();
   }
+  function renderAgeGate() {
+    const copy = root.HubAgeGate.text(language);
+    for (const [id,field] of Object.entries({ageKicker:'kicker',ageQuestion:'question',ageDetail:'detail',ageYes:'yes',ageNo:'no',ageDenied:'denied'}))
+      $(id).textContent = copy[field];
+  }
+  function openSite() {
+    ageConfirmed = true;
+    $('ageGate').hidden = true;
+    $('siteApp').hidden = false; $('siteApp').inert = false;
+    document.body.classList.remove('age-gated');
+    root.HubTracker.start({ language, country, app: app || agePlatform || '' });
+    render();
+  }
+  $('ageYes').addEventListener('click', openSite);
+  $('ageNo').addEventListener('click', () => {
+    $('ageYes').hidden = true; $('ageNo').hidden = true;
+    $('ageDenied').hidden = false;
+  });
   function showPage(value, shouldTrack = true) {
     if (!['games', 'rules', 'deposit', 'reviews'].includes(value)) return;
     page = value;
@@ -132,9 +153,12 @@
     if (copied) root.HubTracker.track('copy_link');
   });
   render();
-  const showTikTokGate = app === 'TikTok';
+  const showTikTokGate = app === 'TikTok' && !agePlatform;
+  const showAgeGate = !!agePlatform;
+  $('ageGate').hidden = !showAgeGate;
+  document.body.classList.toggle('age-gated',showAgeGate);
   document.body.classList.toggle('in-app', showTikTokGate);
-  $('siteApp').hidden = showTikTokGate; $('siteApp').inert = showTikTokGate;
+  $('siteApp').hidden = showTikTokGate || showAgeGate; $('siteApp').inert = showTikTokGate || showAgeGate;
   $('inAppGate').hidden = !showTikTokGate; $('appBadge').textContent = app || '';
   $('bootScreen').hidden = true;
   showPage(location.hash.slice(1), false);
@@ -149,10 +173,10 @@
         if (!explicit && !saved) language = geo[country]?.locale || browser || 'en';
       } catch (_) {}
     }
-    render(); root.HubTracker.start({ language, country, app: app || '' });
+    render(); if (!showAgeGate || ageConfirmed) root.HubTracker.start({ language, country, app: app || agePlatform || '' });
   }
   // Start the SDK immediately so fast taps before the GEO response are also kept.
-  root.HubTracker.start({ language, country, app: app || '' });
+  if (!showAgeGate) root.HubTracker.start({ language, country, app: app || '' });
   void initialize();
   root.HubApp = { detectApp, platform, normalizeLocale, androidIntent, showPage, getState: () => ({ language, country, manualCountry, app, page }) };
 })(window);
