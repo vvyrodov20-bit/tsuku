@@ -98,10 +98,25 @@ test('browser identity stays private while direct links carry the known source',
   assert.equal(reload.tracker.getContext().visitor_id, first.tracker.getContext().visitor_id);
   assert.notEqual(trackerSession().tracker.getContext().visitor_id, first.tracker.getContext().visitor_id);
 });
+test('tracked short links identify source and all CTG uppercase aliases', async () => {
+  const routes = JSON.parse(read('vercel.json')).rewrites.map(route => route.source);
+  for (const [code,name] of Object.entries(config.sources)) {
+    assert.ok(routes.includes('/'+code), code);
+    const session = trackerSession({url:'https://gameselect.vercel.app/'+code});
+    session.tracker.start({language:'en'}); await settled();
+    assert.equal(session.tracker.getContext().source_code,code);
+    assert.equal(session.tracker.getContext().source,name);
+    if (code.startsWith('ctg')) {
+      assert.ok(routes.includes('/'+code.toUpperCase()),code);
+      const upper = trackerSession({url:'https://gameselect.vercel.app/'+code.toUpperCase()});
+      assert.equal(upper.tracker.getContext().source_code,code);
+    }
+  }
+});
 test('each game keeps its exact direct URL across sources, countries and language changes', () => {
   const expected = { 'falling-pickaxe': 'https://lkzh.cc/ebac', 'ice-fishing': 'https://lkuf.cc/339b76', 'tower-rush': 'https://lkuf.cc/6561aa49', 'cash-farming': 'https://lkcq.cc/dd88' };
   const locales = {window:{}}; vm.createContext(locales); vm.runInContext(read('assets/locales.js'),locales);
-  for (const source of ['tt1','tt2','ig1','fb1']) {
+  for (const source of ['tt1','tt2','ig1','ig2','fb1','ctg1','ctg2','ctg3','ctg4','ctg5']) {
     const current = trackerSession({ url: 'https://games.test/'+source+'?creative=ice_02&channel=reels&country=BR' });
     for (const language of Object.keys(locales.window.HubMeta)) {
       current.tracker.update({language,country:'BR'});
