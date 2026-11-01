@@ -8,7 +8,7 @@
     { id: 'tower-rush', name: 'TOWER RUSH', image: 'assets/tower-rush-cutout.png', number: '04' },
   ];
   const sources = {
-    tt1: 'TikTok · Brasil', tt2: 'TikTok · Chile',
+    tt1: 'TikTok · Brasil', tt2: 'TikTok · Chile', yt1: 'YouTube · Game Select',
     ig1: 'Instagram · falling.pickaxe1', ig2: 'Instagram · falling.pickaxe2',
     fb1: 'Facebook · Matias Gonzales',
     ctg1: 'Facebook · Crazy Time Community',
