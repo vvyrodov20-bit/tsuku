@@ -9,7 +9,13 @@
   ];
   const sources = {
     tt1: 'TikTok · Brasil', tt2: 'TikTok · Chile',
-    ig1: 'Instagram · falling.pickaxe1', fb1: 'Facebook · Matias Gonzales',
+    ig1: 'Instagram · falling.pickaxe1', ig2: 'Instagram · falling.pickaxe2',
+    fb1: 'Facebook · Matias Gonzales',
+    ctg1: 'Facebook · Crazy Time Community',
+    ctg2: 'Facebook · Crazy Time Bonus Games',
+    ctg3: 'Facebook · Crazy Time Results & Statistics',
+    ctg4: 'Facebook · Crazy Time Brasil',
+    ctg5: 'Facebook · Crazy Time en Español',
   };
   const config = Object.freeze({ games: Object.freeze(games), sources: Object.freeze(sources) });
   if (typeof module !== 'undefined' && module.exports) module.exports = config;
