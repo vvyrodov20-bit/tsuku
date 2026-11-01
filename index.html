@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="assets/palette.css">
   <link rel="stylesheet" href="assets/cash-farming.css">
   <link rel="stylesheet" href="assets/tiktok-gate.css">
+  <link rel="stylesheet" href="assets/age-gate.css">
   <script src="assets/catalog.js" defer></script>
   <script src="assets/locales.js" defer></script>
   <script src="assets/gate-locales.js" defer></script>
@@ -27,6 +28,7 @@
   <script src="assets/ice-rules-locales.js" defer></script>
   <script src="assets/tracker.js" defer></script>
   <script src="assets/browser-utils.js" defer></script>
+  <script src="assets/age-gate.js" defer></script>
   <script src="assets/legacy-content.js" defer></script>
   <script src="assets/rules.js" defer></script>
   <script src="assets/activity.js" defer></script>
@@ -140,6 +142,19 @@
     </main>
     <footer class="footer container"><p class="disclaimer" data-i18n="disclaimer">18+ ONLY.</p><p>© 2026 GAME SELECT | 1WIN. <span data-i18n="rights">ALL RIGHTS RESERVED.</span></p></footer>
   </div>
+  <section id="ageGate" class="age-gate" hidden aria-labelledby="ageQuestion">
+    <div class="age-gate-card">
+      <div class="age-gate-icon" aria-hidden="true">18+</div>
+      <p id="ageKicker" class="age-gate-kicker">ADULTS ONLY · 18+</p>
+      <h1 id="ageQuestion">Are you 18 or older?</h1>
+      <p id="ageDetail">This site contains information about gambling. You must be at least 18 to continue.</p>
+      <div class="age-gate-actions">
+        <button type="button" id="ageYes" class="age-confirm">Yes, I am 18+</button>
+        <button type="button" id="ageNo" class="age-decline">No</button>
+      </div>
+      <p id="ageDenied" class="age-denied" role="status" hidden>Access is restricted to adults aged 18 or older.</p>
+    </div>
+  </section>
   <section id="inAppGate" class="gate tiktok-gate" hidden aria-labelledby="gateTitle">
     <svg class="gate-menu-arrow" viewBox="0 0 90 270" aria-hidden="true" focusable="false"><path d="M12 256C74 203 77 112 65 20"/><path class="gate-arrow-head" d="M43 40L63 6L84 38L66 31Z"/></svg>
     <div class="gate-visual" aria-hidden="true">
@@ -156,6 +171,6 @@
     <p id="gateStatus" role="status" aria-live="polite"></p><input type="text" id="externalLink" readonly hidden aria-label="Copy link">
     <p class="gate-footer" dir="ltr">GAME SELECT · 18+</p>
   </section>
-  <noscript><div class="no-script">JavaScript is required to select a language. <a href="https://lkvq.cc/9d7ad6b0">Falling Pickaxe</a> · <a href="https://lkuf.cc/339b76">Ice Fishing</a> · <a href="https://lkuf.cc/6561aa49">Tower Rush</a> · <a href="https://lkcq.cc/dd88">Cash Farming</a></div><style>.boot{display:none}</style></noscript>
+  <noscript><div class="no-script">JavaScript is required to confirm age and access Game Select.</div><style>.boot{display:none}</style></noscript>
 </body>
 </html>
