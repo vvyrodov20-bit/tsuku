@@ -67,6 +67,10 @@
       "destination": "/"
     },
     {
+      "source": "/yt1",
+      "destination": "/"
+    },
+    {
       "source": "/postback/partner",
       "destination": "/api/postback/1win"
     }
