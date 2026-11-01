@@ -7,6 +7,8 @@ test('all Game Select sources resolve using postback codes and landing URLs',()=
   for(const [code,title] of Object.entries(sources)){
     const expected=title.replace(/^Facebook · /,'');
     assert.equal(sourceTitle({sub2:code}),expected);
+    assert.equal(knownSource('https://gameselect.vercel.app/'+code),expected);
+    assert.equal(knownSource('https://gameselect.vercel.app/'+code.toUpperCase()),expected);
     assert.equal(knownSource('https://falling-pickaxe-1win.vercel.app/'+code),expected);
   }
   assert.equal(knownSource('https://unrelated.test/fb1'),'');
